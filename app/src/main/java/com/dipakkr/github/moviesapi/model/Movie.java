@@ -9,7 +9,7 @@ import java.util.List;
  * Created by deepak on 5/23/17.
  */
 
-public class MovieResponse {
+public class Movie {
     @SerializedName("poster_path")
     private String posterPath;
 
@@ -49,7 +49,7 @@ public class MovieResponse {
     @SerializedName("vote_average")
     private Double voteAverage;
 
-    public MovieResponse(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreId,
+    public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreId,
                          String id, String title, String orginalLang, String backdropPath, Double popularity,
                          Integer voteCount, Boolean video, Double voteAverage) {
 
