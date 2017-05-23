@@ -20,6 +20,5 @@ public interface ApIinterface {
     @GET("movie/{id")
     Call<MovieResponse>getMovie(@Query("api_key") String apikey);
 
-
     
 }
