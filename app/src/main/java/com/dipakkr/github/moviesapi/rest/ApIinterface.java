@@ -3,7 +3,6 @@ package com.dipakkr.github.moviesapi.rest;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 
 import retrofit2.Call;
-import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -19,6 +18,4 @@ public interface ApIinterface {
 
     @GET("movie/{id")
     Call<MovieResponse>getMovie(@Query("api_key") String apikey);
-
-    
 }
