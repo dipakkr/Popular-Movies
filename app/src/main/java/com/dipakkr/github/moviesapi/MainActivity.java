@@ -1,5 +1,6 @@
 package com.dipakkr.github.moviesapi;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dipakkr.github.moviesapi.activity.MovieDetailActivity;
 import com.dipakkr.github.moviesapi.adapter.MovieAdapter;
 import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
@@ -80,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(MainActivity.this, "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
+                Intent moviedetail = new Intent(MainActivity.this,MovieDetailActivity.class);
+                startActivity(moviedetail);
             }
 
             @Override
