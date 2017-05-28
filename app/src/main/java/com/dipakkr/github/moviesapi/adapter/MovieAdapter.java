@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHoder> {
 
-    private List<Movie> movieList;
+    List<Movie> movieList;
     private Context mContext;
     private int rowLayout;
 
@@ -35,7 +37,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
         ImageView movieIcon;
         TextView movieDate;
 
-        public MovieViewHoder(View v){
+
+        public MovieViewHoder( View v){
             super(v);
             cardView = (CardView)v.findViewById(R.id.movie_card);
             movieTitle = (TextView)v.findViewById(R.id.movie_title);
@@ -80,4 +83,5 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
     public int getItemCount() {
         return movieList.size();
     }
+
 }

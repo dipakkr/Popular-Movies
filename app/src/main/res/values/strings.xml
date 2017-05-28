@@ -1,5 +1,14 @@
 <resources>
+
     <string name="app_name">MoviesAPI</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <string name="tvshow">TV shows</string>
+    <string name="movies">Movies</string>
+    <string name="menu3">Menu 3</string>
+    <string name="menu4">Menu 4</string>
+    <string name="send">Share App</string>
+    <string name="setting">Setting</string>
+
 </resources>

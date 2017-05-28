@@ -10,6 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:id="@+id/select_wood"
+            android:layout_height="match_parent">
+        </Spinner>
+
+    </android.support.v7.widget.Toolbar>
 
 </android.support.design.widget.AppBarLayout>
