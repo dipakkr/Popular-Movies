@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
     private static int count = 2;
 
+    List<Movie> movies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                List<Movie> movies = response.body().getMovies();
+                 movies = response.body().getMovies();
                 recyclerView.setAdapter(new MovieAdapter(movies,getApplicationContext(),R.layout.list_movie_item));
                 Log.d(TAG,"Total movies Received " + movies.size());
             }
@@ -82,9 +84,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(this, recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                //Get the id of movies and pass them to detail activity
+
+                String id = movies.get(position).getId();
+                Log.d(TAG,"ID = " + id);
                 Toast.makeText(MainActivity.this, "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
-                Intent moviedetail = new Intent(MainActivity.this,MovieDetailActivity.class);
-                startActivity(moviedetail);
+                Intent detailIntent = new Intent(MainActivity.this,MovieDetailActivity.class);
+                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
+                startActivity(detailIntent);
             }
 
             @Override
