@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Internal Error occured", Toast.LENGTH_SHORT).show();
             return;
         }
-
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.setDrawerListener(toggle);
@@ -58,10 +57,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         //Using Animator library
         recyclerView.setItemAnimator(new SlideInUpAnimator());
 
-        //Calling for getting
+        //Calling for getting TOP rated movies
         ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
         Call<MovieResponse> responseCall = apiService.getTopRated(API_KEY);
         responseCall.enqueue(new Callback<MovieResponse>() {

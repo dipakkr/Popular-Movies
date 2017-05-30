@@ -10,5 +10,6 @@
     <string name="menu4">Menu 4</string>
     <string name="send">Share App</string>
     <string name="setting">Setting</string>
+    <string name="movie_detail">Movie Details</string>
 
 </resources>
