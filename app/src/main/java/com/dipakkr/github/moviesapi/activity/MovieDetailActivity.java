@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import com.dipakkr.github.moviesapi.R;
 
 /**
- * Created by root on 5/28/17.
+ * Created by deepak on 5/28/17.
  */
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -18,5 +18,6 @@ public class MovieDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
         Toolbar toolbar = new Toolbar(this);
         setSupportActionBar(toolbar);
+        setTitle(R.string.app_name);
     }
 }
