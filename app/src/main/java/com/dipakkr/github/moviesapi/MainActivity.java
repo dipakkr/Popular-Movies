@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static String TAG = MainActivity.class.getSimpleName();
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
+    private static int count = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Internal Error occured", Toast.LENGTH_SHORT).show();
             return;
         }
-
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.setDrawerListener(toggle);
@@ -58,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         //Using Animator library
         recyclerView.setItemAnimator(new SlideInUpAnimator());
 
-        //Calling for getting
+        //Calling for getting TOP rated movies
         ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
         Call<MovieResponse> responseCall = apiService.getTopRated(API_KEY);
         responseCall.enqueue(new Callback<MovieResponse>() {
@@ -125,12 +126,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
+        count--;
+        Log.d(TAG,"COUNT == "+count);
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else{
-         super.onBackPressed();
+
+            if(count == 0){
+                finish();
+                Log.d(TAG,"COUNT == 0");
+            }else{
+                Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        count = 2;
     }
 }

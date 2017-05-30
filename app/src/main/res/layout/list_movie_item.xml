@@ -18,13 +18,14 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="200dp"
+            android:background="@drawable/pp"
             android:id="@+id/movie_icon"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/movie_release_date"
                 android:padding="2dp"
+                android:layout_marginTop="10dp"
                 android:text="23-01-1996"/>
 
         </LinearLayout>
