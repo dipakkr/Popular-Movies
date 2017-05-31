@@ -1,6 +1,8 @@
 package com.dipakkr.github.moviesapi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -70,7 +72,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                 movies = response.body().getMovies();
+
+                if(!isNetworkConnected()){
+
+                }
+                movies = response.body().getMovies();
                 recyclerView.setAdapter(new MovieAdapter(movies,getApplicationContext(),R.layout.list_movie_item));
                 Log.d(TAG,"Total movies Received " + movies.size());
             }
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(MainActivity.this, "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
                 Intent detailIntent = new Intent(MainActivity.this,MovieDetailActivity.class);
                 detailIntent.putExtra(Intent.EXTRA_TEXT,id);
+                detailIntent.putExtra("pos",position);
                 startActivity(detailIntent);
             }
 
@@ -154,5 +161,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPause() {
         super.onPause();
         count = 2;
+    }
+    private boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() !=null;
     }
 }
