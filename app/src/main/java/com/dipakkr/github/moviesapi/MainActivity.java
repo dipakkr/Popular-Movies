@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+
 import com.dipakkr.github.moviesapi.activity.MovieDetailActivity;
 import com.dipakkr.github.moviesapi.adapter.MovieAdapter;
 import com.dipakkr.github.moviesapi.model.Movie;
@@ -26,7 +27,6 @@ import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
 import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -39,8 +39,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static String TAG = MainActivity.class.getSimpleName();
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
     private static int count = 2;
+    private  Context context;
 
     List<Movie> movies;
+
+
+    ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +71,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setItemAnimator(new SlideInUpAnimator());
 
         //Calling for getting TOP rated movies
-        ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
+
         Call<MovieResponse> responseCall = apiService.getTopRated(API_KEY);
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
 
-                if(!isNetworkConnected()){
-
-                }
                 movies = response.body().getMovies();
-                recyclerView.setAdapter(new MovieAdapter(movies,getApplicationContext(),R.layout.list_movie_item));
-                Log.d(TAG,"Total movies Received " + movies.size());
-            }
+                recyclerView.setAdapter(new MovieAdapter(movies, getApplicationContext(), R.layout.list_movie_item));
+                Log.d(TAG, "Total movies Received " + movies.size());
 
+            }
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
+                if(!isNetworkConnected()) {
+
+                }
                 Toast.makeText(MainActivity.this, "Error in Calling Api ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -166,4 +170,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() !=null;
     }
+
 }
