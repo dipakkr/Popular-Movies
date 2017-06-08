@@ -54,13 +54,25 @@
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_detail"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                app:layout_collapseMode="pin" />
 
-            </android.support.v7.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:id="@+id/movie_detail_header"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Movie Name"
+                    android:textSize="18dp"/>
+
+
+            </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

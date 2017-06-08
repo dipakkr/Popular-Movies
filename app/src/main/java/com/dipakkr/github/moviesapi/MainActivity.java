@@ -1,9 +1,13 @@
 package com.dipakkr.github.moviesapi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +20,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+
 import com.dipakkr.github.moviesapi.activity.MovieDetailActivity;
 import com.dipakkr.github.moviesapi.adapter.MovieAdapter;
+import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
 import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -37,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static String TAG = MainActivity.class.getSimpleName();
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
     private static int count = 2;
+    private  Context context;
+
+    List<Movie> movies;
+
+    ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Internal Error occured", Toast.LENGTH_SHORT).show();
             return;
         }
+
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.setDrawerListener(toggle);
@@ -56,25 +67,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
+        //Setup View pager
+        git
+
+
+        /*final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Using Animator library
         recyclerView.setItemAnimator(new SlideInUpAnimator());
 
         //Calling for getting TOP rated movies
-        ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
+
         Call<MovieResponse> responseCall = apiService.getTopRated(API_KEY);
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                List<Movie> movies = response.body().getMovies();
-                recyclerView.setAdapter(new MovieAdapter(movies,getApplicationContext(),R.layout.list_movie_item));
-                Log.d(TAG,"Total movies Received " + movies.size());
-            }
 
+                movies = response.body().getMovies();
+                recyclerView.setAdapter(new MovieAdapter(movies, getApplicationContext(), R.layout.list_movie_item));
+                Log.d(TAG, "Total movies Received " + movies.size());
+
+            }
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
+                if(!isNetworkConnected()) {
+
+                }
                 Toast.makeText(MainActivity.this, "Error in Calling Api ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,16 +101,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(this, recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                //Get the id of movies and pass them to detail activity
+
+                String id = movies.get(position).getId();
+                Log.d(TAG,"ID = " + id);
                 Toast.makeText(MainActivity.this, "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
-                Intent moviedetail = new Intent(MainActivity.this,MovieDetailActivity.class);
-                startActivity(moviedetail);
+                Intent detailIntent = new Intent(MainActivity.this,MovieDetailActivity.class);
+                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
+                detailIntent.putExtra("pos",position);
+                startActivity(detailIntent);
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
 
             }
-        }));
+        }));*/
     }
 
     @Override
@@ -119,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
          }
 
-        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        drawerLayout.closeDrawer(GravityCompat.START);
+         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -135,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else{
 
             if(count == 0){
+                count = 0 ;
                 finish();
                 Log.d(TAG,"COUNT == 0");
             }else{
@@ -147,5 +173,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPause() {
         super.onPause();
         count = 2;
+    }
+
+    private boolean isNetworkConnected(){
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() !=null;
     }
 }

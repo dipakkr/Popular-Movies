@@ -12,6 +12,13 @@
     <string name="setting">Setting</string>
     <string name="movie_detail">Movie Details</string>
 
+
+    //Name of tabs
+    <string name="pop_movies">Popular Movies</string>
+    <string name="upc_movies">Upcoming Movies</string>
+    <string name="top_movies">Top Rated Movies</string>
+    <string name="now_movies">Now Playing Movies</string>
+
     <string name="movie_static_desc">Raj is a rich, carefree, happy-go-lucky second generation NRI.
         Simran is the daughter of Chaudhary Baldev Singh, who in spite of being an NRI is very strict
         about adherence to Indian values. Simran has left for India to be married to her childhood fiancé.

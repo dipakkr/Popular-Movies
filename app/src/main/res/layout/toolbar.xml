@@ -20,4 +20,10 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:id="@+id/tabs"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+
 </android.support.design.widget.AppBarLayout>

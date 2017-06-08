@@ -37,8 +37,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
         ImageView movieIcon;
         TextView movieDate;
 
-
         public MovieViewHoder( View v){
+
             super(v);
             cardView = (CardView)v.findViewById(R.id.movie_card);
             movieTitle = (TextView)v.findViewById(R.id.movie_title);
