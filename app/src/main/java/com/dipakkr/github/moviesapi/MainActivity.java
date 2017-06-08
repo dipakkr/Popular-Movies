@@ -40,13 +40,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
-    private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
+
     private static int count = 2;
-    private  Context context;
 
-    List<Movie> movies;
-
-    ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(API_KEY == null){
-            Toast.makeText(this, "Internal Error occured", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
