@@ -68,7 +68,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //Setup View pager
-        git
+        ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        SimplePagerAdapter adapter = new SimplePagerAdapter(getApplicationContext(),getSupportFragmentManager());
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        viewPager.setAdapter(adapter);
 
 
         /*final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
