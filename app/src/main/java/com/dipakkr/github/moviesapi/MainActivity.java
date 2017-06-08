@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.activity.MovieDetailActivity;
 import com.dipakkr.github.moviesapi.adapter.MovieAdapter;
+import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     List<Movie> movies;
 
-
     ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
 
     @Override
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Internal Error occured", Toast.LENGTH_SHORT).show();
             return;
         }
+
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.setDrawerListener(toggle);
@@ -64,7 +67,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
+        //Setup View pager
+        git
+
+
+        /*final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Using Animator library
@@ -109,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onItemLongClick(View view, int position) {
 
             }
-        }));
+        }));*/
     }
 
     @Override
@@ -137,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
          }
 
-        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        drawerLayout.closeDrawer(GravityCompat.START);
+         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -153,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else{
 
             if(count == 0){
+                count = 0 ;
                 finish();
                 Log.d(TAG,"COUNT == 0");
             }else{
@@ -166,9 +174,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onPause();
         count = 2;
     }
+
     private boolean isNetworkConnected(){
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() !=null;
     }
-
 }
