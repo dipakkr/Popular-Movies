@@ -5,7 +5,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     tools:showIn="@layout/list_movie_item"
+    tools:actionBarNavMode="tabs"
     android:layout_height="match_parent">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:id="@+id/pbar"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyler_view"
