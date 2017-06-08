@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by root on 6/8/17.
+ * Created by deepak on 6/8/17.
  */
 
 public class HighRatedMovies extends Fragment {
@@ -81,6 +81,25 @@ public class HighRatedMovies extends Fragment {
 
             }
         });
+       /* recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getContext(), recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                //Get the id of movies and pass them to detail activity
+
+                String id = movies.get(position).getId();
+                Log.d(TAG,"ID = " + id);
+                Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
+                Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
+                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
+                detailIntent.putExtra("pos",position);
+                startActivity(detailIntent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));*/
 
         return view;
     }
@@ -108,6 +127,5 @@ public class HighRatedMovies extends Fragment {
 
             }
         }));
-
     }
 }

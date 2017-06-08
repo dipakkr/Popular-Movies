@@ -4,9 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/movie_card"
-    android:elevation="80dp"
     app:cardCornerRadius="3dp"
-    android:layout_margin="4dp"
+    android:layout_margin="2dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
