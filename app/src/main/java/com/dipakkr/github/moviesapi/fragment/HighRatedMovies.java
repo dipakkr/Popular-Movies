@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.R;
@@ -45,6 +46,7 @@ public class HighRatedMovies extends Fragment {
 
     ApIinterface apiService = Apiclient.getClient().create(ApIinterface.class);
 
+    ProgressBar bar;
     RecyclerView recyclerView;
 
 
@@ -58,6 +60,9 @@ public class HighRatedMovies extends Fragment {
             Toast.makeText(context, "Go get a Api key first", Toast.LENGTH_SHORT).show();
         }
 
+        bar = (ProgressBar)view.findViewById(R.id.pbar);
+        bar.setVisibility(View.VISIBLE);
+
          recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -69,6 +74,7 @@ public class HighRatedMovies extends Fragment {
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                bar.setVisibility(View.GONE);
                 movies = response.body().getMovies();
 
                 //
