@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,10 +16,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.dipakkr.github.moviesapi.R;
-import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
+import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
+
+import java.util.List;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -35,57 +35,45 @@ import retrofit2.Response;
 public class MovieDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener{
 
     private static String TAG = MovieDetailActivity.class.getSimpleName();
-    private static final String URL_MOVIE = "http://api.themoviedb.org/3/movie/";
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
-
-    TextView overview;
-    TextView date;
-    TextView title;
 
     @BindView(R.id.collapse_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
 
     @BindView(R.id.app_bar) AppBarLayout appBarLayout;
 
-
+    List<Movie> movies;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-        Toolbar toolbar = new Toolbar(this);
-        setSupportActionBar(toolbar);
+        final Toolbar toolbar = new Toolbar(this);
+
+        if(toolbar != null){
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         if(getSupportActionBar() !=null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         String id  = bundle.getString(Intent.EXTRA_TEXT);
+        final String movie_name = bundle.getString(Intent.EXTRA_TEXT);
+
+        TextView textView = (TextView)findViewById(R.id.md_name);
+        textView.setText(movie_name);
 
         final int pos = bundle.getInt("pos");
         Log.d(TAG,"PASSED_ID : " + id);
         Log.d(TAG,"PASSED POS : " + pos);
 
-        ApIinterface iinterface = Apiclient.getClient().create(ApIinterface.class);
 
-        Call<MovieResponse> movieResponseCall = iinterface.getMovie(id,API_KEY);
-        Log.d(TAG,URL_MOVIE);
-        movieResponseCall.enqueue(new Callback<MovieResponse>() {
-            @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-
-
-            }
-            @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
-
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         return super.onCreateOptionsMenu(menu);
     }
 
