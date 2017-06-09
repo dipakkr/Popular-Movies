@@ -32,7 +32,7 @@ import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
 import java.util.List;
 
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

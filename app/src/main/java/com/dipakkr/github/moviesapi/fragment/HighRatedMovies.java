@@ -25,7 +25,6 @@ import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
 import java.util.List;
 
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -67,7 +66,8 @@ public class HighRatedMovies extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Using Animator library
-        recyclerView.setItemAnimator(new SlideInUpAnimator());
+
+       /* recyclerView.setItemAnimator(new SlideInUpAnimator()); */
 
         //Calling for getting TOP rated movies
         Call<MovieResponse> responseCall = apiService.getTopRated(API_KEY);
@@ -76,8 +76,6 @@ public class HighRatedMovies extends Fragment {
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 bar.setVisibility(View.GONE);
                 movies = response.body().getMovies();
-
-                //
                 recyclerView.setAdapter(new MovieAdapter(movies,getActivity(),R.layout.list_movie_item));
                 Log.d(TAG,"TOTAL MOVIES  : " + movies.size());
             }
