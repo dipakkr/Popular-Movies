@@ -34,7 +34,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/speaker_image"
+                    android:id="@+id/movie_poster"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:fitsSystemWindows="true"
@@ -62,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-
                 android:id="@+id/movie_detail_header"
                 android:padding="20dp">
 
@@ -143,23 +142,34 @@
                 android:padding="20dp"
                 android:id="@+id/desc_item_lang"
                 android:layout_below="@+id/view2"
-
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_panorama_fish_eye_black_24dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="en"
+                    android:textSize="18sp"
+                    android:id="@+id/movie_lang"/>
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_panorama_fish_eye_black_24dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="100 min"
+                    android:textSize="18sp"
+                    android:id="@+id/movie_runtime"/>
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_panorama_fish_eye_black_24dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="955 votes"
+                    android:textSize="18sp"
+                    android:id="@+id/movie_vote"/>
 
             </LinearLayout>
 

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 
 import android.widget.Toast;
 
+import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 
 
@@ -63,12 +64,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id){
             case R.id.nav_tvshow :
+                Intent TVShow = new Intent(this, TvShowActivity.class);
+                startActivity(TVShow);
                 return true;
 
             case R.id.nav_movies :
+                drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
 
             case R.id.nav_fav :
+git
                 return true;
 
             case R.id.nav_person :

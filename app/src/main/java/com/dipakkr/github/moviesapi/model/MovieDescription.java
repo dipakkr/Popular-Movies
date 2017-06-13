@@ -20,24 +20,32 @@ public class MovieDescription {
     private String movie_release_date;
 
     @SerializedName("runtime")
-    private int movie_runtime;
+    private String movie_runtime;
 
     @SerializedName("tagline")
     private String movie_tagline;
 
     @SerializedName("vote_average")
-    private String moveie_avg_vote;
+    private String movie_avg_vote;
+
+    @SerializedName("poster_path")
+    private String movie_poster_path;
+
+    @SerializedName("vote_count")
+    private String movie_votes;
 
     public MovieDescription(String movie_lang, String movie_title, String movie_overview,
-                            String movie_release_date, int movie_runtime, String movie_tagline,
-                            String moveie_avg_vote) {
+                            String movie_release_date, String movie_runtime, String movie_tagline,
+                            String moveie_avg_vote,String movie_poster_path,String movie_votes) {
         this.movie_lang = movie_lang;
         this.movie_title = movie_title;
         this.movie_overview = movie_overview;
         this.movie_release_date = movie_release_date;
         this.movie_runtime = movie_runtime;
         this.movie_tagline = movie_tagline;
-        this.moveie_avg_vote = moveie_avg_vote;
+        this.movie_avg_vote = moveie_avg_vote;
+        this.movie_poster_path=movie_poster_path;
+        this.movie_votes = movie_votes;
     }
 
     public String getMovie_lang() {
@@ -72,11 +80,11 @@ public class MovieDescription {
         this.movie_release_date = movie_release_date;
     }
 
-    public int getMovie_runtime() {
+    public String getMovie_runtime() {
         return movie_runtime;
     }
 
-    public void setMovie_runtime(int movie_runtime) {
+    public void setMovie_runtime(String movie_runtime) {
         this.movie_runtime = movie_runtime;
     }
 
@@ -89,10 +97,26 @@ public class MovieDescription {
     }
 
     public String getMoveie_avg_vote() {
-        return moveie_avg_vote;
+        return movie_avg_vote;
     }
 
     public void setMoveie_avg_vote(String moveie_avg_vote) {
-        this.moveie_avg_vote = moveie_avg_vote;
+        this.movie_avg_vote = moveie_avg_vote;
+    }
+
+    public String getMovie_poster_path() {
+        return movie_poster_path;
+    }
+
+    public void setMovie_poster_path(String movie_poster_path) {
+        this.movie_poster_path = movie_poster_path;
+    }
+
+    public String getMovie_votes() {
+        return movie_votes;
+    }
+
+    public void setMovie_votes(String movie_votes) {
+        this.movie_votes = movie_votes;
     }
 }

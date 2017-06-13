@@ -3,6 +3,7 @@ package com.dipakkr.github.moviesapi.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,23 +14,24 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dipakkr.github.moviesapi.R;
-import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
-import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
+import com.squareup.picasso.Picasso;
 
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Query;
+
+import static android.view.View.GONE;
 
 /**
  * Created by deepak on 5/28/17.
@@ -40,6 +42,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
     private static String TAG = MovieDetailActivity.class.getSimpleName();
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
+    private static String  BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 
     @BindView(R.id.collapse_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
@@ -47,6 +50,11 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
     TextView mMovieDesc;
     TextView mReleaseDate;
+    ImageView mPoster;
+    ProgressBar progressBar;
+    TextView mLang;
+    TextView mRunTime;
+    TextView mVotes;
 
     MovieDescription movieDescription;
     ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
@@ -61,6 +69,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         if(toolbar != null){
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
         Intent intent = this.getIntent();
@@ -76,6 +85,13 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
         mMovieDesc = (TextView)findViewById(R.id.movie_desc);
         mReleaseDate = (TextView)findViewById(R.id.release_date);
+        mPoster = (ImageView)findViewById(R.id.movie_poster);
+        progressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        mLang = (TextView)findViewById(R.id.movie_lang);
+        mRunTime = (TextView)findViewById(R.id.movie_runtime);
+        mVotes = (TextView)findViewById(R.id.movie_vote);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         final Call<MovieDescription> movieDescriptionCall = apIinterface.getMovieDes(id,API_KEY);
         movieDescriptionCall.enqueue(new Callback<MovieDescription>() {
@@ -84,9 +100,19 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
                 Log.v(TAG,apIinterface.getMovieDes(id,API_KEY).request().url().toString());
                 String desc = response.body().getMovie_overview();
                 String date = response.body().getMovie_release_date();
+                String image_path = response.body().getMovie_poster_path();
+                String lang = response.body().getMovie_lang();
+                String runtime = response.body().getMovie_runtime();
+                String votes = response.body().getMovie_votes();
 
+                String IMG_URL = BASE_URL + image_path;
+                progressBar.setVisibility(GONE);
+                Picasso.with(getApplicationContext()).load(IMG_URL).into(mPoster);
                 mMovieDesc.setText(desc);
                 mReleaseDate.setText(date);
+                mLang.setText(lang);
+                mRunTime.setText(runtime);
+                mVotes.setText(votes);
             }
 
             @Override

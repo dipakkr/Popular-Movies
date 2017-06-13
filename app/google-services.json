@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1081349708730",
+    "project_id": "firebase-movieapi"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081349708730:android:77afb711bb5277ae",
+        "android_client_info": {
+          "package_name": "com.dipakkr.github.moviesapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081349708730-4dgaodh0qg4gkfk2f05j1mecig6ude37.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dipakkr.github.moviesapi",
+            "certificate_hash": "ea330d9318aba61e1a499cb54c1a030b2b965c7b"
+          }
+        },
+        {
+          "client_id": "1081349708730-mgcn5cmdvhs0uccccp0dq0poei7r3ps3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj5frKmybziz-jwPlF2EHiJu-pg7opkO4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
