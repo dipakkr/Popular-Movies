@@ -92,8 +92,6 @@ public class NowPlayingMovies extends Fragment {
                 String id = pop_movies.get(position).getId();
                 String movie_name = pop_movies.get(position).getTitle();
 
-                Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
-
                 Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
                 detailIntent.putExtra("movie_id",id);
                 detailIntent.putExtra("movie_name",movie_name);

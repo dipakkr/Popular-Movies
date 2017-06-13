@@ -105,9 +105,6 @@ public class HighRatedMovies extends Fragment {
                 String id = movies.get(position).getId();
                 String movie_name = movies.get(position).getTitle();
 
-                Log.d(TAG,"ID = " + id);
-                Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
-
                 Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
                 detailIntent.putExtra("movie_id",id);
                 detailIntent.putExtra("movie_name",movie_name);

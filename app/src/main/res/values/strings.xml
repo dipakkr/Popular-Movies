@@ -6,8 +6,8 @@
 
     <string name="tvshow">TV shows</string>
     <string name="movies">Movies</string>
-    <string name="menu3">Menu 3</string>
-    <string name="menu4">Menu 4</string>
+    <string name="menu_celebrities">Popular Persons</string>
+    <string name="menu_fav">My Favourites</string>
     <string name="send">Share App</string>
     <string name="setting">Setting</string>
     <string name="movie_detail">Movie Details</string>

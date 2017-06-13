@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_movies :
                 return true;
 
-            case R.id.nav_menu3 :
+            case R.id.nav_fav :
                 return true;
 
-            case R.id.nav_menu4 :
+            case R.id.nav_person :
                 return true;
 
             case R.id.nav_send :
