@@ -30,6 +30,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.dipakkr.github.moviesapi.R.string.movies;
+
 /**
  * Created by root on 6/8/17.
  */
@@ -88,9 +90,14 @@ public class NowPlayingMovies extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 String id = pop_movies.get(position).getId();
-                Intent detailIntent = new Intent(getActivity(), MovieDetailActivity.class);
-                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
-                Log.d(TAG,"PASSED ID : "  + id);
+                String movie_name = pop_movies.get(position).getTitle();
+
+                Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
+
+                Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
+                detailIntent.putExtra("movie_id",id);
+                detailIntent.putExtra("movie_name",movie_name);
+                detailIntent.putExtra("pos",position);
                 startActivity(detailIntent);
             }
 

@@ -1,9 +1,11 @@
 package com.dipakkr.github.moviesapi.rest;
 
+import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -26,6 +28,6 @@ public interface ApIinterface {
     Call<MovieResponse>getUpcomingMovies(@Query("api_key") String apikey);
 
     @GET("movie/{id}")
-    Call<MovieResponse>getMovie(@Query("id") String id, @Query("api_key") String apikey);
+    Call<MovieDescription>getMovieDes(@Path("id") String id, @Query("api_key") String apikey);
 
 }

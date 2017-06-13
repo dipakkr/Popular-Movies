@@ -74,6 +74,10 @@ public class HighRatedMovies extends Fragment {
         responseCall.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+
+                String url = apiService.getTopRated(API_KEY).request().url().toString();
+                Log.v(TAG,url);
+
                 bar.setVisibility(View.GONE);
                 movies = response.body().getMovies();
                 recyclerView.setAdapter(new MovieAdapter(movies,getActivity(),R.layout.list_movie_item));
@@ -85,25 +89,6 @@ public class HighRatedMovies extends Fragment {
 
             }
         });
-       /* recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getContext(), recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //Get the id of movies and pass them to detail activity
-
-                String id = movies.get(position).getId();
-                Log.d(TAG,"ID = " + id);
-                Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
-                Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
-                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
-                detailIntent.putExtra("pos",position);
-                startActivity(detailIntent);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        }));*/
 
         return view;
     }
@@ -122,9 +107,10 @@ public class HighRatedMovies extends Fragment {
 
                 Log.d(TAG,"ID = " + id);
                 Toast.makeText(getActivity(), "Item " + position+ "clicked" , Toast.LENGTH_SHORT).show();
+
                 Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
-                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
-                detailIntent.putExtra(Intent.EXTRA_TEXT,movie_name);
+                detailIntent.putExtra("movie_id",id);
+                detailIntent.putExtra("movie_name",movie_name);
                 detailIntent.putExtra("pos",position);
                 startActivity(detailIntent);
             }

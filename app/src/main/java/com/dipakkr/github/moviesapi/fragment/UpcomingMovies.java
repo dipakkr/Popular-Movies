@@ -88,12 +88,14 @@ public class UpcomingMovies extends android.support.v4.app.Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 String id = pop_movies.get(position).getId();
-                Intent detailIntent = new Intent(getActivity(), MovieDetailActivity.class);
-                detailIntent.putExtra(Intent.EXTRA_TEXT,id);
-                Log.d(TAG,"PASSED ID : "  + id);
+                String movie_name = pop_movies.get(position).getTitle();
+
+                Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
+                detailIntent.putExtra("movie_id",id);
+                detailIntent.putExtra("movie_name",movie_name);
+                detailIntent.putExtra("pos",position);
                 startActivity(detailIntent);
             }
-
 
             @Override
             public void onItemLongClick(View view, int position) {
