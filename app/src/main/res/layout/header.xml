@@ -4,15 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:background="@drawable/side_nav_bar"
-    android:gravity="bottom"
+    android:gravity="left"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+    <ImageView
+        android:id="@+id/acc_image"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_account_circle_black_24dp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Welcome!!"
-        android:gravity="center"
-        android:textSize="18sp"/>
+        android:id="@+id/acc_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/account_email" />
 
 </LinearLayout>

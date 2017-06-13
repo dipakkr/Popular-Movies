@@ -18,10 +18,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -54,7 +56,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
+
+        TextView email = (TextView)findViewById(R.id.acc_email);
+
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -73,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.nav_fav :
-git
                 return true;
 
             case R.id.nav_person :
