@@ -26,4 +26,8 @@
         whole family. Thus begins a saga</string>
     <string name="account_email"> android@geeksportal.com </string>
 
+    //Fb SDK
+    <string name="facebook_app_id">1532459306764208</string>
+    <string name="fb_login_protocol_scheme">fb1532459306764208</string>
+
 </resources>

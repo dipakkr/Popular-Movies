@@ -14,6 +14,12 @@ import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.MainActivity;
 import com.dipakkr.github.moviesapi.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -22,11 +28,13 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.Arrays;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by root on 6/13/17.
+ * Created by deepak on 6/13/17.
  */
 
 public class Authentication extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
@@ -35,25 +43,37 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
     private static int RC_SIGN_IN = 100;
     private String TAG = Authentication.class.getSimpleName();
     Button mSkip;
+    LoginButton loginButton;
+    CallbackManager callbackManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
 
-        SignInButton signInButton = (SignInButton)findViewById(R.id.bt_google);
+        SignInButton signInButton = (SignInButton) findViewById(R.id.bt_google);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(this);
-        mSkip = (Button)findViewById(R.id.bt_skip);
+        mSkip = (Button) findViewById(R.id.bt_skip);
         mSkip.setOnClickListener(this);
+
+        //FB Login button
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setOnClickListener(this);
+        loginButton.setReadPermissions("email");
+        //Create call back manager to handle login process
+        callbackManager = CallbackManager.Factory.create();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+
     }
 
     @Override
@@ -73,8 +93,34 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
             case R.id.bt_google :
                 signIn();
                 break;
+
+            case R.id.login_button :
+                loginWithFacebook();
+              break;
         }
     }
+
+    private void loginWithFacebook(){
+
+            LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+
+                }
+
+                @Override
+                public void onCancel() {
+
+                }
+
+                @Override
+                public void onError(FacebookException error) {
+                    Toast.makeText(Authentication.this, "Error in Login", Toast.LENGTH_SHORT).show();
+                }
+            });
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+    }
+
     private void signIn(){
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent,RC_SIGN_IN);
@@ -89,6 +135,8 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
             GoogleSignInResult signInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(signInResult);
         }
+
+        callbackManager.onActivityResult(requestCode,resultCode,data);
     }
     private void handleSignInResult(GoogleSignInResult signInResult){
      // After you retrieve the sign-in result, you can check if sign-in succeeded with the isSuccess method.
