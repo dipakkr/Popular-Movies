@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.style.URLSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,10 +24,16 @@ import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,7 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     DrawerLayout drawerLayout;
 
+    TextView mEmail;
+
     private GoogleApiClient apiClient;
+    AccessToken accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        accessToken = AccessToken.getCurrentAccessToken();
+
+        mEmail = (TextView)findViewById(R.id.acc_email);
+
+       /* Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        String name = bundle.getString("name");
+        String surname = bundle.getString("surname");
+        String url = bundle.getString("imageUrl");
+
+        Log.d(TAG,"NAme " + name);
+        Log.d(TAG,"surname" + surname);
+        Log.d(TAG,"URL " + url);*/
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -61,9 +85,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
 
-        TextView email = (TextView)findViewById(R.id.acc_email);
-
     }
+
 
 
     @Override
@@ -112,17 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if(id == R.id.movie_search) {
-            //Add code
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onBackPressed() {
         count--;
         Log.d(TAG,"COUNT == "+count);
@@ -131,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else{
-
             if(count == 0){
                 count = 0 ;
                 finish();
@@ -147,10 +158,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onPause();
         count = 2;
     }
-
-    private boolean isNetworkConnected(){
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() !=null;
-    }
-
 }

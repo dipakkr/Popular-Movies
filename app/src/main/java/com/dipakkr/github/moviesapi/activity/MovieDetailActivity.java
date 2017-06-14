@@ -37,7 +37,6 @@ import static android.view.View.GONE;
  * Created by deepak on 5/28/17.
  */
 
-
 public class MovieDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener{
 
     private static String TAG = MovieDetailActivity.class.getSimpleName();
@@ -64,6 +63,8 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+
+
 
         final Toolbar toolbar = new Toolbar(this);
         if(toolbar != null){
