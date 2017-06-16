@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +25,8 @@ import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
+import com.dipakkr.github.moviesapi.fragment.HighRatedMovies;
+import com.dipakkr.github.moviesapi.utils.HelpUtils;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -59,18 +62,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         accessToken = AccessToken.getCurrentAccessToken();
 
-        mEmail = (TextView)findViewById(R.id.acc_email);
-
-       /* Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        String name = bundle.getString("name");
-        String surname = bundle.getString("surname");
-        String url = bundle.getString("imageUrl");
-
-        Log.d(TAG,"NAme " + name);
-        Log.d(TAG,"surname" + surname);
-        Log.d(TAG,"URL " + url);*/
-
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.setDrawerListener(toggle);
@@ -84,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
+
 
     }
 
@@ -121,6 +113,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case  R.id.nav_setting :
                 return true;
+
+            case R.id.nav_about :
+                HelpUtils.showAboutus(this);
          }
 
         drawerLayout.closeDrawer(GravityCompat.START);

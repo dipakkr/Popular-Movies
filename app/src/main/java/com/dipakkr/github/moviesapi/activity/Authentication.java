@@ -1,17 +1,10 @@
 package com.dipakkr.github.moviesapi.activity;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -46,10 +39,11 @@ import java.util.Arrays;
 
 public class Authentication extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
-    private GoogleApiClient mGoogleApiClient;
-    private static int RC_SIGN_IN = 100;
     private String TAG = Authentication.class.getSimpleName();
-    Button mSkip;
+
+    private GoogleApiClient mGoogleApiClient;
+
+    private static int RC_SIGN_IN = 100;
 
     //Facebook API
     LoginButton loginButton;
@@ -57,6 +51,8 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
     private AccessTokenTracker mTokentracker;
     private ProfileTracker profileTracker;
     private AccessToken mAccessToken;
+
+    Button mSkip;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,7 +76,6 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        //Facebook SDk
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setOnClickListener(this);
@@ -113,13 +108,13 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
                 @Override
                 public void onSuccess(LoginResult loginResult) {
                     Toast.makeText(getApplicationContext(), "Login Succesful", Toast.LENGTH_SHORT).show();
-
                     Profile profile = Profile.getCurrentProfile();
                     nextActivity(profile);
                 }
 
                 @Override
                 public void onCancel() {
+                    Toast.makeText(Authentication.this, "Login Cancelled", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -127,6 +122,7 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
                     Toast.makeText(Authentication.this, "Error in Login", Toast.LENGTH_SHORT).show();
                 }
             });
+
             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
             LoginManager.getInstance().logInWithReadPermissions(this,Arrays.asList("user_friends"));
     }
@@ -134,9 +130,6 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
     private void nextActivity(Profile profile){
         if(profile != null){
             Intent main = new Intent(Authentication.this, MainActivity.class);
-            main.putExtra("name", profile.getFirstName());
-            main.putExtra("surname", profile.getLastName());
-            main.putExtra("imageUrl", profile.getProfilePictureUri(200,200).toString());
             startActivity(main);
         }
     }
@@ -151,7 +144,6 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == RC_SIGN_IN){
-            //successful login
             GoogleSignInResult signInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(signInResult);
         }
@@ -163,17 +155,14 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
 
         if(signInResult.isSuccess()){
             GoogleSignInAccount account = signInResult.getSignInAccount();
-            String name = account.getDisplayName();
-            String email = account.getPhotoUrl().toString();
             Intent googleLogin = new Intent(Authentication.this,MainActivity.class);
-            googleLogin.putExtra("user_name",name);
-            googleLogin.putExtra("google_email",email);
             startActivity(googleLogin);
         }else{
             Toast.makeText(this, "Failed Sign in ", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
+
     public void onClick(View v) {
         int id = v.getId();
 

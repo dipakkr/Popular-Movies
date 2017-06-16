@@ -27,6 +27,7 @@
 
     <item android:title="Communicate" >
         <menu>
+
             <item
                 android:id="@+id/nav_setting"
                 android:title="@string/setting"
@@ -37,6 +38,12 @@
                 android:icon="@drawable/ic_menu_share"
                 android:id="@+id/nav_send"
                 android:title="@string/send" />
+
+            <item
+                android:id="@+id/nav_about"
+                android:title="@string/about"
+                android:icon="@drawable/ic_person_black_24dp"/>
+
         </menu>
     </item>
 
