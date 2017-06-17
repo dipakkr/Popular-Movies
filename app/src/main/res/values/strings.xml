@@ -31,4 +31,6 @@
     <string name="facebook_app_id">1532459306764208</string>
     <string name="fb_login_protocol_scheme">fb1532459306764208</string>
 
+    <string name="about_info">MovieAPI is a free and open source project built under Android developer nanodegree course.Feel free to contribute and report bug.</string>
+
 </resources>

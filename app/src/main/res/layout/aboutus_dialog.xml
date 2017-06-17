@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_gravity="center"
     android:layout_width="match_parent"
-    android:layout_margin="30dp"
-    android:padding="10dp"
-    android:layout_height="match_parent">
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp"
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Developer"
-        android:padding="20dp"
+        android:text="Developer |  Designer "
+        android:padding="10dp"
+        android:textColor="#ed712e"
         android:textSize="22sp"
         android:gravity="center"/>
 
@@ -18,7 +21,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Deepak Kumar"
-        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_info"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https://github.com/dipakkr/MovieAPI-themoviedb"
+        android:autoLink="web"
+        android:padding="10dp"
+        android:textSize="15sp"
         android:gravity="center"/>
 
 </LinearLayout>
