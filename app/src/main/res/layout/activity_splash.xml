@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#476960"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movies"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/txt"
+        android:textColor="#e4e4e4"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginTop="20sp"
+        android:id="@+id/img_movie"
+        android:background="@drawable/ic_movie_black_36dp"
+        android:layout_gravity="center_horizontal"/>
+
+
+</android.support.design.widget.CoordinatorLayout>
