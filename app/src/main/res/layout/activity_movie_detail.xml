@@ -142,32 +142,84 @@
                 android:layout_below="@+id/view2"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_weight="1"
-                    android:text="en"
-                    android:textSize="18sp"
-                    android:id="@+id/movie_lang"/>
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="100 min"
-                    android:textSize="18sp"
-                    android:id="@+id/movie_runtime"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="en"
+                        android:textSize="20sp"
+                        android:id="@+id/movie_lang"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Language"
+                        android:textStyle="italic"
+                        android:textColor="#7f0a83"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_weight="1"
-                    android:text="955 votes"
-                    android:textSize="18sp"
-                    android:id="@+id/movie_vote"/>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="100 min"
+                        android:textSize="20sp"
+                        android:id="@+id/movie_runtime"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Runtime"
+                        android:textStyle="italic"
+                        android:textColor="#7f0a83"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="955 votes"
+                        android:textSize="20sp"
+                        android:id="@+id/movie_vote"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Votes"
+                        android:textStyle="italic"
+                        android:textColor="#7f0a83"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"/>
+
+                    </LinearLayout>
 
             </LinearLayout>
 
