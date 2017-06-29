@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.dipakkr.github.moviesapi.R;
 
 /**
- * Created by root on 6/24/17.
+ * Created by deepak on 6/24/17.
  */
 
 public class SplashActivity extends AppCompatActivity {
@@ -43,14 +43,13 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     startActivity(new Intent(SplashActivity.this,Authentication.class));
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
             }
         }).start();
-
     }
 }
 

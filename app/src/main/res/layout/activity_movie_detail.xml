@@ -36,7 +36,7 @@
                 <ImageView
                     android:id="@+id/movie_poster"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="300dp"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
@@ -82,11 +82,15 @@
 
     <!--After Collapsible toolbar -->
 
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/nestedScrollView">
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -244,5 +248,16 @@
         </RelativeLayout>
 
    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center_vertical|left"
+        app:layout_anchor="@+id/nestedScrollView"
+        android:src="@drawable/ic_love_black_24dp"
+        app:elevation="5dp"
+        app:layout_anchorGravity="top|right" />
 
 </android.support.design.widget.CoordinatorLayout>

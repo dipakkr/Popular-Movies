@@ -64,8 +64,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-
-
         final Toolbar toolbar = new Toolbar(this);
         if(toolbar != null){
             setSupportActionBar(toolbar);

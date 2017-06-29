@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dipakkr.github.moviesapi.activity.PopularPersonActivity;
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 import com.dipakkr.github.moviesapi.fragment.HighRatedMovies;
@@ -75,11 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
-
-
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -101,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.nav_person :
+                Intent person = new Intent(this, PopularPersonActivity.class);
+                startActivity(person);
                 return true;
 
             case R.id.nav_send :
@@ -140,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else{
             if(count == 0){
                 count = 0 ;
-                finish();
+              moveTaskToBack(true);
                 Log.d(TAG,"COUNT == 0");
             }else{
                 Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
