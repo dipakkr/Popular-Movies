@@ -27,17 +27,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ImageView imageView = (ImageView)findViewById(R.id.img_movie);
         txt = (TextView)findViewById(R.id.txt);
-
         zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
-        slide_down = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_down);
-
         txt.setVisibility(View.VISIBLE);
         txt.setAnimation(zoomIn);
-
-        imageView.setVisibility(View.VISIBLE);
-        imageView.setAnimation(slide_down);
 
         new Thread(new Runnable() {
             @Override

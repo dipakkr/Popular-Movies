@@ -3,6 +3,7 @@ package com.dipakkr.github.moviesapi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -20,11 +21,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.dipakkr.github.moviesapi.activity.PopularPersonActivity;
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
+import com.dipakkr.github.moviesapi.activity.UserProfileActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 import com.dipakkr.github.moviesapi.fragment.HighRatedMovies;
 import com.dipakkr.github.moviesapi.utils.HelpUtils;
@@ -36,8 +43,11 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,13 +55,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static String TAG = MainActivity.class.getSimpleName();
 
     private static int count = 2;
-
-    Toolbar toolbar;
     DrawerLayout drawerLayout;
+    Toolbar toolbar;
 
+    //Text variables
     TextView mEmail;
+    String user_name;
+    Uri image_uri;
 
     private GoogleApiClient apiClient;
+    ImageView profile_image;
     AccessToken accessToken;
 
     @Override
@@ -62,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         accessToken = AccessToken.getCurrentAccessToken();
+        Profile profile = Profile.getCurrentProfile();
+        user_name = profile.getName();
+        image_uri = profile.getProfilePictureUri(220,220);
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -69,6 +85,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        mEmail = (TextView)header.findViewById(R.id.acc_email);
+        profile_image = (ImageView)header.findViewById(R.id.acc_image);
+        RelativeLayout headerContainer = (RelativeLayout)header.findViewById(R.id.profile_detail_container);
+        headerContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (accessToken != null) {
+                    Intent profile = new Intent(MainActivity.this, UserProfileActivity.class);
+                    profile.putExtra("name",user_name);
+                    startActivity(profile);
+                } else {
+                    Toast.makeText(MainActivity.this, "You are not logged in.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        if(accessToken == null){
+            mEmail.setTextSize(13);
+            mEmail.setText("You are not Logged In.");
+        }else{
+            mEmail.setText(user_name);
+            Picasso.with(getApplicationContext()).load(image_uri).transform(new CropCircleTransformation()).into(profile_image);
+        }
 
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);

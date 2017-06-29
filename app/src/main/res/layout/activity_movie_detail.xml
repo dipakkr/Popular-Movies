@@ -41,14 +41,7 @@
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_gravity="bottom"
-                    android:layout_height="100dp"/>
 
             </FrameLayout>
 
@@ -100,8 +93,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:padding="10dp"
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:id="@+id/release_date"
                 android:textColor="#303f5b"
@@ -124,9 +119,8 @@
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
-                android:padding="15dp"
+                android:padding="16dp"
                 android:text="@string/movie_static_desc"
-
                 android:layout_below="@+id/view1"
                 android:layout_alignParentStart="true" />
 
@@ -250,7 +244,7 @@
    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"

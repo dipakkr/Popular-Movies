@@ -1,19 +1,12 @@
 package com.dipakkr.github.moviesapi.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.model.Movie;
 

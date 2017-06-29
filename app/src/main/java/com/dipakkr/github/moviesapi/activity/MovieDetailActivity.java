@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
@@ -37,7 +40,7 @@ import static android.view.View.GONE;
  * Created by deepak on 5/28/17.
  */
 
-public class MovieDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener{
+public class MovieDetailActivity extends AppCompatActivity {
 
     private static String TAG = MovieDetailActivity.class.getSimpleName();
     private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
@@ -54,6 +57,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     TextView mLang;
     TextView mRunTime;
     TextView mVotes;
+    FloatingActionButton fab;
 
     MovieDescription movieDescription;
     ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
@@ -89,6 +93,9 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         mLang = (TextView)findViewById(R.id.movie_lang);
         mRunTime = (TextView)findViewById(R.id.movie_runtime);
         mVotes = (TextView)findViewById(R.id.movie_vote);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setVisibility(View.VISIBLE);
+
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -137,23 +144,43 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+   /* @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         int scroll = -1 ;
          boolean isshowing = false;
-
+*//*
         if(scroll == -1 ){
             scroll = appBarLayout.getTotalScrollRange();
+            fab.setVisibility(View.GONE);
+            Toast.makeText(this, "SCroll at full", Toast.LENGTH_SHORT).show();
         }if(scroll + verticalOffset == 0 ) {
             collapsingToolbarLayout.setTitle(getString(R.string.app_name));
+            Toast.makeText(this, "Up scrolled", Toast.LENGTH_SHORT).show();
         }else if(isshowing){
             collapsingToolbarLayout.setTitle(" ");
             isshowing = false;
-        }
-    }
+        }*//*
+    }*/
 
     private boolean isnetworkConnected(){
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
     }
+
+    public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
+
+        @Override
+        public void onNestedScroll(CoordinatorLayout coordinatorLayout, FloatingActionButton child,
+                                   View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+            super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
+                    dyUnconsumed);
+
+            if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
+                child.hide();
+            } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
+                child.show();
+            }
+        }
+    }
+
 }

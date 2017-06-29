@@ -11,6 +11,7 @@
         <item
             android:id="@+id/nav_movies"
             android:title="@string/movies"
+            android:checked="true"
             android:icon="@drawable/ic_movie_black_36dp"/>
 
         <item

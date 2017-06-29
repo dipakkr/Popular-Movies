@@ -2,26 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:background="@drawable/side_nav_bar"
+    android:layout_height="200dp"
     android:gravity="left"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/acc_image"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/profile_detail_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_account_circle_black_24dp" />
+        android:background="@drawable/profile_detail_selector"
+        android:paddingBottom="5dp">
 
-    <TextView
-        android:id="@+id/acc_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:text="@string/account_email" />
+
+        <ImageView
+            android:id="@+id/acc_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_account_circle_black_24dp"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/acc_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/acc_image"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/acc_image"
+            android:fontFamily="serif"
+            android:padding="5dp"
+            android:text="User Name"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/acc_email"
+            android:layout_toEndOf="@+id/acc_image"
+            android:text=" 0 Reviews"
+            android:id="@+id/review_count"
+            android:textColor="#c9c7c7"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>

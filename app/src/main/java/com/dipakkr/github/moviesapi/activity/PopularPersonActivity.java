@@ -21,8 +21,6 @@ public class PopularPersonActivity extends AppCompatActivity {
     RecyclerView mPersonRecycler;
     Context mContext;
 
-    List<String> list = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +29,7 @@ public class PopularPersonActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String str = "Deepak Kumar";
+        String str = "";
 
         mPersonRecycler = (RecyclerView) findViewById(R.id.recyler_view_person);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(PopularPersonActivity.this, 2);
