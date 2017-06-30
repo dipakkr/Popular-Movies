@@ -41,8 +41,6 @@
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax" />
 
-
-
             </FrameLayout>
 
             <android.support.v7.widget.Toolbar
@@ -51,23 +49,6 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:id="@+id/movie_detail_header"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Movie Name"
-                    android:id="@+id/md_name"
-                    android:textColor="@android:color/white"
-                    android:textSize="18dp"/>
-
-
-            </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
