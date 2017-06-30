@@ -7,19 +7,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.adapter.PersonAdapter;
+import com.dipakkr.github.moviesapi.model.Celebrity;
+import com.dipakkr.github.moviesapi.model.MovieResponse;
+import com.dipakkr.github.moviesapi.model.PopularCelebrity;
+import com.dipakkr.github.moviesapi.rest.ApIinterface;
+import com.dipakkr.github.moviesapi.rest.Apiclient;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PopularPersonActivity extends AppCompatActivity {
 
+    private static final String API_KEY = "53873c6fc26c2abac786d7822d2e1a93";
+
     RecyclerView mPersonRecycler;
-    Context mContext;
+
+    List<Celebrity> celebrities;
+
+    ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +45,6 @@ public class PopularPersonActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String str = "";
 
         mPersonRecycler = (RecyclerView) findViewById(R.id.recyler_view_person);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(PopularPersonActivity.this, 2);
@@ -37,10 +52,28 @@ public class PopularPersonActivity extends AppCompatActivity {
         mPersonRecycler.setHasFixedSize(true);
         mPersonRecycler.setClipToPadding(true);
         mPersonRecycler.addItemDecoration(new ItemDecoration(2,dpToPx(3),true));
-        mPersonRecycler.setAdapter(new PersonAdapter(str,PopularPersonActivity.this,R.layout.card_item_person));
+
+
+        Call<PopularCelebrity> popularCelebrityCall = apIinterface.getPopCelebrity(API_KEY);
+        popularCelebrityCall.enqueue(new Callback<PopularCelebrity>() {
+            @Override
+            public void onResponse(Call<PopularCelebrity> call, Response<PopularCelebrity> response) {
+                celebrities = response.body().getCelebrities();
+                mPersonRecycler.setAdapter(new PersonAdapter(celebrities,PopularPersonActivity.this,R.layout.card_item_person));
+            }
+
+            @Override
+            public void onFailure(Call<PopularCelebrity> call, Throwable t) {
+                String url = apIinterface.getPopCelebrity(API_KEY).request().url().toString();
+                Log.v("URL=====>",url);
+                mPersonRecycler.setAdapter(new PersonAdapter(celebrities,PopularPersonActivity.this,R.layout.card_item_person));
+                Toast.makeText(getApplicationContext(), "FAiled", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
+    /*. Recycler View Decoration.*/
     public static class ItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;

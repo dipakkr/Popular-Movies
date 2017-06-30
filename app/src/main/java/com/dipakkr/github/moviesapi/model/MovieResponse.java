@@ -10,8 +10,8 @@ import java.util.List;
  */
 
 public class MovieResponse {
-    @SerializedName("pages")
-    private int pages;
+   /* @SerializedName("pages")
+    private int pages;*/
 
     @SerializedName("results")
     private List<Movie> movies = new ArrayList<>();
@@ -22,13 +22,13 @@ public class MovieResponse {
     @SerializedName("total_pages")
     private int totalPages;
 
-    public int getPages() {
+    /*public int getPages() {
         return pages;
     }
 
     public void setPages(int pages) {
         this.pages = pages;
-    }
+    }*/
 
     public List<Movie> getMovies() {
         return movies;

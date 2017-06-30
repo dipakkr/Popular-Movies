@@ -27,23 +27,22 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activity.MovieDetailActivity"
             android:label="@string/movie_detail"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
         <activity
             android:name=".activity.TvShowActivity"
             android:label="@string/tvshow"
             android:parentActivityName=".MainActivity">
 
-            <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -69,16 +68,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.PopularPersonActivity"
             android:label="@string/menu_celebrities"
             android:parentActivityName=".MainActivity">
-
-            <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
         <activity android:name=".activity.UserProfileActivity"
             android:label="@string/my_profile"
             android:parentActivityName=".MainActivity">
@@ -88,6 +87,7 @@
                 android:value=".MainActivity" />
 
         </activity>
+
     </application>
 
 </manifest>

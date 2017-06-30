@@ -3,12 +3,20 @@ package com.dipakkr.github.moviesapi.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dipakkr.github.moviesapi.R;
+import com.dipakkr.github.moviesapi.model.Celebrity;
 import com.dipakkr.github.moviesapi.model.Movie;
+
+import java.util.List;
 
 
 /**
@@ -17,23 +25,23 @@ import com.dipakkr.github.moviesapi.model.Movie;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ImageHolder> {
 
-    String string = "deepak";
+    List<Celebrity> celebrities;
     private Context mContext;
     private int columnLayout;
 
     public static class ImageHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-
+        TextView name;
+        ImageView person_pic;
 
         public ImageHolder(View v) {
             super(v);
-            cardView = (CardView) v.findViewById(R.id.movie_card);
-
+            name = (TextView)v.findViewById(R.id.person_name);
+            person_pic = (ImageView)v.findViewById(R.id.person_pic);
         }
     }
 
-    public PersonAdapter(String string, Context mContext, int columnLayout) {
-        this.string = string;
+    public PersonAdapter(List<Celebrity> celebrities, Context mContext, int columnLayout) {
+        this.celebrities = celebrities;
         this.mContext = mContext;
         this.columnLayout = columnLayout;
     }
@@ -46,6 +54,25 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ImageHolde
 
     @Override
     public void onBindViewHolder(ImageHolder holder, int position) {
+
+
+        String BASE_URL = "https://image.tmdb.org/t/p/w500";
+
+        if(celebrities != null){
+            String img = celebrities.get(position).getmImagePath();
+            String IMG_URL = BASE_URL + img ;
+            Log.v("IMage " + position, IMG_URL);
+
+            Glide.with(mContext).load(IMG_URL)
+                    .thumbnail(1f)
+                    .crossFade()
+                    //Center Crop fits the image to image view
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(holder.person_pic);
+
+            holder.name.setText(celebrities.get(position).getName());
+        }
 
     }
 

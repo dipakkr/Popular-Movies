@@ -9,12 +9,14 @@
     
 
         <ImageView
+            android:id="@+id/person_pic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/pp"
             android:layout_marginBottom="20dp"/>
 
         <TextView
+            android:id="@+id/person_name"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="@string/about"
