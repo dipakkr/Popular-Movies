@@ -47,7 +47,6 @@ public class PopularPersonActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
         mPersonRecycler = (RecyclerView) findViewById(R.id.recyler_view_person);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(PopularPersonActivity.this, 2);
         mPersonRecycler.setLayoutManager(gridLayoutManager);
@@ -95,11 +94,6 @@ public class PopularPersonActivity extends AppCompatActivity {
         }));
     }
 
-
-
-
-
-    /*. Recycler View Decoration.*/
     public static class ItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;

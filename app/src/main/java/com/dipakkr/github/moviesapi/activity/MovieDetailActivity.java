@@ -157,11 +157,16 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
         if (scroll == -1) {
             scroll = appBarLayout.getTotalScrollRange();
+            Toast.makeText(this, "Collapsed", Toast.LENGTH_SHORT).show();
+
         }
         if (scroll + verticalOffset == 0) {
             collapsingToolbarLayout.setTitle(movie_name);
+            Toast.makeText(this, "Collapsed", Toast.LENGTH_SHORT).show();
         } else if (isshowing) {
             collapsingToolbarLayout.setTitle(" ");
+            Toast.makeText(this, "Collapsed", Toast.LENGTH_SHORT).show();
+
             isshowing = false;
         }
 

@@ -14,5 +14,6 @@ public class CelebrityProfile extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 }

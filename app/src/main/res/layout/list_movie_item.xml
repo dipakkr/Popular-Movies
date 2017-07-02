@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="160dp"
             android:layout_height="200dp"
-            android:background="@drawable/pp"
+            android:background="#eeeeee"
             android:id="@+id/movie_icon"/>
 
         <LinearLayout

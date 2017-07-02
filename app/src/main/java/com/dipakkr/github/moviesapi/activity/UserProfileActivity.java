@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.dipakkr.github.moviesapi.MainActivity;
 import com.dipakkr.github.moviesapi.R;
 import com.facebook.AccessToken;
 import com.facebook.Profile;
@@ -46,7 +47,7 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LoginManager.getInstance().logOut();
-                finish();
+                startActivity(new Intent(UserProfileActivity.this,MainActivity.class));
             }
         });
 

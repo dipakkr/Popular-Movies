@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Uri image_uri;
 
     private GoogleApiClient apiClient;
+    private Profile profile;
     ImageView profile_image;
     AccessToken accessToken;
 
@@ -74,10 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        accessToken = AccessToken.getCurrentAccessToken();
-        Profile profile = Profile.getCurrentProfile();
-        user_name = profile.getName();
-        image_uri = profile.getProfilePictureUri(220,220);
+        checkLoginstatus();
+
+
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mEmail.setTextSize(13);
             mEmail.setText("You are not Logged In.");
         }else{
+            user_name = profile.getName();
+            image_uri = profile.getProfilePictureUri(220,220);
             mEmail.setText(user_name);
             Picasso.with(getApplicationContext()).load(image_uri).transform(new CropCircleTransformation()).into(profile_image);
         }
@@ -117,6 +119,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
+    }
+
+    private void checkLoginstatus(){
+        accessToken = AccessToken.getCurrentAccessToken();
+        profile = Profile.getCurrentProfile();
     }
 
     @Override
