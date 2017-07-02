@@ -1,7 +1,6 @@
 package com.dipakkr.github.moviesapi.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.model.Celebrity;
-import com.dipakkr.github.moviesapi.model.Movie;
 
 import java.util.List;
 
@@ -78,10 +76,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ImageHolde
 
     @Override
     public int getItemCount() {
-        return 20;
+        return celebrities.size();
     }
-
-    //For setting divider height in grids
-
 
 }

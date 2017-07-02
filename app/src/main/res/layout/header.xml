@@ -27,28 +27,58 @@
             android:id="@+id/acc_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/acc_image"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/acc_image"
             android:fontFamily="serif"
             android:padding="5dp"
             android:text="User Name"
             android:textColor="#fff"
             android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_below="@+id/review_count" />
 
         <TextView
+            android:id="@+id/review_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/acc_email"
+            android:layout_alignTop="@+id/acc_image"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/acc_image"
-            android:text=" 0 Reviews"
-            android:id="@+id/review_count"
-            android:textColor="#c9c7c7"
-            android:textSize="16sp" />
+            android:text="Welcome"
+            android:textColor="#e9d9d3"
+            android:textSize="20sp" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#fff"
+            android:textColor="#000"
+            android:layout_margin="10dp"
+            android:text="BookMarks"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#fff"
+            android:textColor="#000"
+            android:layout_margin="10dp"
+            android:text="Button"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dedcdc"/>
 
 
 </LinearLayout>

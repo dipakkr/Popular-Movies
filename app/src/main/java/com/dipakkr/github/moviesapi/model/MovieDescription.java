@@ -26,7 +26,7 @@ public class MovieDescription {
     private String movie_tagline;
 
     @SerializedName("vote_average")
-    private String movie_avg_vote;
+    private double movie_avg_vote;
 
     @SerializedName("poster_path")
     private String movie_poster_path;
@@ -36,7 +36,7 @@ public class MovieDescription {
 
     public MovieDescription(String movie_lang, String movie_title, String movie_overview,
                             String movie_release_date, String movie_runtime, String movie_tagline,
-                            String moveie_avg_vote,String movie_poster_path,String movie_votes) {
+                            double moveie_avg_vote,String movie_poster_path,String movie_votes) {
         this.movie_lang = movie_lang;
         this.movie_title = movie_title;
         this.movie_overview = movie_overview;
@@ -96,11 +96,11 @@ public class MovieDescription {
         this.movie_tagline = movie_tagline;
     }
 
-    public String getMoveie_avg_vote() {
+    public double getMoveie_avg_vote() {
         return movie_avg_vote;
     }
 
-    public void setMoveie_avg_vote(String moveie_avg_vote) {
+    public void setMoveie_avg_vote(double moveie_avg_vote) {
         this.movie_avg_vote = moveie_avg_vote;
     }
 

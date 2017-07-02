@@ -276,15 +276,21 @@
 
    </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:id="@+id/txt_review"
+        android:text="8.5"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="#ff0000"
+        android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginRight="20dp"
-        android:layout_gravity="center_vertical|left"
-        app:layout_anchor="@+id/nestedScrollView"
         android:src="@drawable/ic_love_black_24dp"
         app:elevation="5dp"
-        app:layout_anchorGravity="top|right" />
+        app:layout_anchor="@+id/nestedScrollView"
+        app:layout_anchorGravity="top|center_horizontal" />
 
 </android.support.design.widget.CoordinatorLayout>

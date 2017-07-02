@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,7 +59,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     TextView mLang;
     TextView mRunTime;
     TextView mVotes;
-    FloatingActionButton fab;
+    TextView mRating;
 
     ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
     String id;
@@ -91,8 +92,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         mLang = (TextView) findViewById(R.id.movie_lang);
         mRunTime = (TextView) findViewById(R.id.movie_runtime);
         mVotes = (TextView) findViewById(R.id.movie_vote);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setVisibility(View.VISIBLE);
+        mRating = (TextView) findViewById(R.id.txt_review);
 
 
         progressBar.setVisibility(View.VISIBLE);
@@ -108,6 +108,9 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
                 String lang = response.body().getMovie_lang();
                 String runtime = response.body().getMovie_runtime();
                 String votes = response.body().getMovie_votes();
+                double rating = response.body().getMoveie_avg_vote();
+
+                String mRate = String.valueOf(rating);
 
                 String IMG_URL = BASE_URL + image_path;
                 progressBar.setVisibility(GONE);
@@ -117,6 +120,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
                 mLang.setText(lang);
                 mRunTime.setText(runtime);
                 mVotes.setText(votes);
+                mRating.setText(mRate);
             }
 
             @Override
@@ -128,8 +132,10 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_movie_detail, menu);
+        return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -137,6 +143,9 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
         if (id == android.R.id.home) {
             finish();
+        }
+        if(id == R.id.share_movie){
+           //
         }
         return super.onOptionsItemSelected(item);
     }
@@ -148,7 +157,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
         if (scroll == -1) {
             scroll = appBarLayout.getTotalScrollRange();
-            fab.setVisibility(View.GONE);
         }
         if (scroll + verticalOffset == 0) {
             collapsingToolbarLayout.setTitle(movie_name);
@@ -156,5 +164,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
             collapsingToolbarLayout.setTitle(" ");
             isshowing = false;
         }
+
     }
+
 }

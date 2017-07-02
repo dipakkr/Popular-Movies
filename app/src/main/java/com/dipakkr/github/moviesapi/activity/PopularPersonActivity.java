@@ -1,6 +1,7 @@
 package com.dipakkr.github.moviesapi.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.model.PopularCelebrity;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
+import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,11 @@ public class PopularPersonActivity extends AppCompatActivity {
         mPersonRecycler.setClipToPadding(true);
         mPersonRecycler.addItemDecoration(new ItemDecoration(2,dpToPx(3),true));
 
+        fetchDataFromApi();
+        handleItemClick();
+    }
+
+    public void fetchDataFromApi(){
 
         Call<PopularCelebrity> popularCelebrityCall = apIinterface.getPopCelebrity(API_KEY);
         popularCelebrityCall.enqueue(new Callback<PopularCelebrity>() {
@@ -70,8 +77,27 @@ public class PopularPersonActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "FAiled", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
+    public void handleItemClick(){
+        mPersonRecycler.addOnItemTouchListener(new RecyclerViewClickListener(PopularPersonActivity.this,
+                mPersonRecycler, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(PopularPersonActivity.this,CelebrityProfile.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
+    }
+
+
+
+
 
     /*. Recycler View Decoration.*/
     public static class ItemDecoration extends RecyclerView.ItemDecoration {
