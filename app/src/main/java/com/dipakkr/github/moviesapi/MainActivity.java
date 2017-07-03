@@ -1,9 +1,12 @@
 package com.dipakkr.github.moviesapi;
 
+import android.annotation.TargetApi;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -14,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.style.URLSpan;
 import android.util.Log;
@@ -30,6 +34,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.dipakkr.github.moviesapi.activity.PopularPersonActivity;
+import com.dipakkr.github.moviesapi.activity.SearchMovieActivity;
 import com.dipakkr.github.moviesapi.activity.TvShowActivity;
 import com.dipakkr.github.moviesapi.activity.UserProfileActivity;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static int count = 2;
     DrawerLayout drawerLayout;
+    SearchView searchView;
     Toolbar toolbar;
 
     //Text variables
@@ -76,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         checkLoginstatus();
-
-
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -168,12 +172,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search,menu);
+
+        SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView)menu.findItem(R.id.movie_search).getActionView();
+        searchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchMovieActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+       int id = item.getItemId();
+
+        if(id == R.id.movie_search){
+            searchView.getQuery();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -200,4 +229,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onPause();
         count = 2;
     }
+
 }

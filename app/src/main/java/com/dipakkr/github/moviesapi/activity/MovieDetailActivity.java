@@ -116,7 +116,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
                 progressBar.setVisibility(GONE);
                 Picasso.with(getApplicationContext()).load(IMG_URL).into(mPoster);
                 mMovieDesc.setText(desc);
-                mReleaseDate.setText(date);
+                mReleaseDate.setText("Release Date "+date);
                 mLang.setText(lang);
                 mRunTime.setText(runtime);
                 mVotes.setText(votes);
@@ -169,7 +169,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
             isshowing = false;
         }
-
     }
 
 }

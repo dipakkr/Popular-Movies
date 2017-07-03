@@ -3,6 +3,7 @@ package com.dipakkr.github.moviesapi.rest;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.model.PopularCelebrity;
+import com.facebook.CallbackManager;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -33,5 +34,8 @@ public interface ApIinterface {
 
     @GET("person/popular")
     Call<PopularCelebrity>getPopCelebrity(@Query("api_key") String apikey);
+
+    @GET("search/movie")
+    Call<MovieResponse>getSearchedMovie(@Query("api_key") String apikey, @Query("query") String query);
 
 }

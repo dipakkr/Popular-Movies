@@ -81,14 +81,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".activity.CelebrityProfile"
+        <activity
+            android:name=".activity.CelebrityProfile"
             android:label="@string/my_profile"
             android:parentActivityName=".activity.PopularPersonActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.PopularPersonActivity" />
-
         </activity>
+        <activity android:name=".activity.SearchMovieActivity"></activity>
     </application>
 
 </manifest>
