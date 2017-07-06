@@ -89,7 +89,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.PopularPersonActivity" />
         </activity>
-        <activity android:name=".activity.SearchMovieActivity"></activity>
+        <activity
+            android:name=".activity.SearchMovieActivity"
+            android:label="Search Results"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.VideosActivity"
+            android:label="Trailers "></activity>
+
+        <activity android:name=".activity.MovieReview">
+
+        </activity>
     </application>
 
 </manifest>

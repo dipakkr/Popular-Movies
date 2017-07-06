@@ -2,6 +2,8 @@ package com.dipakkr.github.moviesapi.rest;
 
 import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
+import com.dipakkr.github.moviesapi.model.MovieReviewResponse;
+import com.dipakkr.github.moviesapi.model.MovieVideo;
 import com.dipakkr.github.moviesapi.model.PopularCelebrity;
 import com.facebook.CallbackManager;
 
@@ -37,5 +39,11 @@ public interface ApIinterface {
 
     @GET("search/movie")
     Call<MovieResponse>getSearchedMovie(@Query("api_key") String apikey, @Query("query") String query);
+
+    @GET("movie/{movie_id}/videos")
+    Call<MovieVideo>getMovieVideo(@Path("movie_id") String id ,@Query("api_key") String apikey);
+
+    @GET("movie/{movie_id}/reviews")
+    Call<MovieReviewResponse>getMoviesReview(@Path("movie_id") String id ,@Query("api_key") String apikey);
 
 }

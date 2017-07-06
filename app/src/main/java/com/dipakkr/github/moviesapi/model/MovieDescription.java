@@ -34,18 +34,21 @@ public class MovieDescription {
     @SerializedName("vote_count")
     private String movie_votes;
 
-    public MovieDescription(String movie_lang, String movie_title, String movie_overview,
-                            String movie_release_date, String movie_runtime, String movie_tagline,
-                            double moveie_avg_vote,String movie_poster_path,String movie_votes) {
+    @SerializedName("id")
+    private int movie_id;
+
+    public MovieDescription(String movie_lang, String movie_title, String movie_overview, String movie_release_date, String movie_runtime,
+                            String movie_tagline, double movie_avg_vote, String movie_poster_path, String movie_votes, int movie_id) {
         this.movie_lang = movie_lang;
         this.movie_title = movie_title;
         this.movie_overview = movie_overview;
         this.movie_release_date = movie_release_date;
         this.movie_runtime = movie_runtime;
         this.movie_tagline = movie_tagline;
-        this.movie_avg_vote = moveie_avg_vote;
-        this.movie_poster_path=movie_poster_path;
+        this.movie_avg_vote = movie_avg_vote;
+        this.movie_poster_path = movie_poster_path;
         this.movie_votes = movie_votes;
+        this.movie_id = movie_id;
     }
 
     public String getMovie_lang() {
@@ -96,12 +99,12 @@ public class MovieDescription {
         this.movie_tagline = movie_tagline;
     }
 
-    public double getMoveie_avg_vote() {
+    public double getMovie_avg_vote() {
         return movie_avg_vote;
     }
 
-    public void setMoveie_avg_vote(double moveie_avg_vote) {
-        this.movie_avg_vote = moveie_avg_vote;
+    public void setMovie_avg_vote(double movie_avg_vote) {
+        this.movie_avg_vote = movie_avg_vote;
     }
 
     public String getMovie_poster_path() {
@@ -118,5 +121,13 @@ public class MovieDescription {
 
     public void setMovie_votes(String movie_votes) {
         this.movie_votes = movie_votes;
+    }
+
+    public int getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
     }
 }

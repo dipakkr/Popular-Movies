@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -60,10 +61,15 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     TextView mRunTime;
     TextView mVotes;
     TextView mRating;
+    Button review;
+
+    ImageView image_play;
 
     ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
     String id;
     String movie_name;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,10 +77,14 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         setContentView(R.layout.activity_movie_detail);
 
         Intent intent = this.getIntent();
-        Bundle bundle = intent.getExtras();
-        id = bundle.getString("movie_id");
-        movie_name = bundle.getString("movie_name");
-        final int pos = bundle.getInt("pos");
+
+        if(intent != null){
+            Bundle bundle = intent.getExtras();
+            id = bundle.getString("movie_id");
+            movie_name = bundle.getString("movie_name");
+            final int pos = bundle.getInt("pos");
+        }
+
         Log.d(TAG, "PASSED_ID : " + id);
         Log.d(TAG, "PASSED POS : " + movie_name);
 
@@ -93,8 +103,9 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         mRunTime = (TextView) findViewById(R.id.movie_runtime);
         mVotes = (TextView) findViewById(R.id.movie_vote);
         mRating = (TextView) findViewById(R.id.txt_review);
+        review = (Button)findViewById(R.id.bt_review);
 
-
+        image_play = (ImageView)findViewById(R.id.bt_videos);
         progressBar.setVisibility(View.VISIBLE);
 
         final Call<MovieDescription> movieDescriptionCall = apIinterface.getMovieDes(id, API_KEY);
@@ -108,7 +119,11 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
                 String lang = response.body().getMovie_lang();
                 String runtime = response.body().getMovie_runtime();
                 String votes = response.body().getMovie_votes();
-                double rating = response.body().getMoveie_avg_vote();
+                double rating = response.body().getMovie_avg_vote();
+                int id = response.body().getMovie_id();
+
+
+                Log.v("MOVIE ID========>>>>",String.valueOf(id));
 
                 String mRate = String.valueOf(rating);
 
@@ -126,6 +141,24 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
             @Override
             public void onFailure(Call<MovieDescription> call, Throwable t) {
                 Toast.makeText(MovieDetailActivity.this, "Error in Network Connectivity", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        image_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent videos = new Intent(MovieDetailActivity.this,VideosActivity.class);
+                videos.putExtra("movie_id",id);
+                startActivity(videos);
+            }
+        });
+
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reviewIntent = new Intent(MovieDetailActivity.this,MovieReview.class);
+                reviewIntent.putExtra("id",id);
+                startActivity(reviewIntent);
             }
         });
     }
@@ -166,7 +199,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         } else if (isshowing) {
             collapsingToolbarLayout.setTitle(" ");
             Toast.makeText(this, "Collapsed", Toast.LENGTH_SHORT).show();
-
             isshowing = false;
         }
     }

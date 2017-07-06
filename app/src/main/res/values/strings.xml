@@ -14,6 +14,7 @@
     <string name="movie_detail">Movie Details</string>
     <string name="my_profile">My Profile</string>
 
+    <string name="api_key">53873c6fc26c2abac786d7822d2e1a93</string>
 
     //Name of tabs
     <string name="pop_movies">Popular Movies</string>
