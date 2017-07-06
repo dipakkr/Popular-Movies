@@ -6,8 +6,8 @@
         android:right="2dp"
         android:bottom="2dp" />
 
-    <corners android:radius="1dp" />
+    <corners android:radius="2.5dp" />
 
-    <solid android:color="#7cefecec" />
+    <solid android:color="#90efecec" />
 
 </shape>

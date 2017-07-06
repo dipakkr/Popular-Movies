@@ -67,12 +67,12 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/nestedScrollView">
-
+        android:background="#fff"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
         <RelativeLayout
@@ -80,240 +80,250 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/release_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
                 android:padding="10dp"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:id="@+id/release_date"
+                android:text="Release Date 27-07-1996"
                 android:textColor="#303f5b"
-                android:text="Release Date 27-07-1996" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
 
             <View
-                android:layout_width="match_parent"
-                android:layout_below="@id/release_date"
                 android:id="@+id/view1"
-                android:background="#e1e1e1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/release_date"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_height="0.5dp"/>
+                android:background="#e1e1e1" />
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_below="@+id/view1"
+              android:orientation="vertical"
+              android:id="@+id/section_story"
+              android:background="#7aefefef"
+              android:layout_height="wrap_content">
+
+              <TextView
+                  android:id="@+id/txt_detail"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/view1"
+                  android:layout_marginTop="10dp"
+                  android:gravity="center_horizontal"
+                  android:text=" Story"
+                  android:textColor="#2a4d79"
+                  android:textSize="16sp"
+                  android:textStyle="bold" />
+
+              <TextView
+                  android:id="@+id/movie_desc"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentStart="true"
+                  android:layout_below="@+id/txt_detail"
+                  android:gravity="center"
+                  android:padding="15dp"
+                  android:text="@string/movie_static_desc"
+                  android:textColor="@android:color/black"
+                  android:textSize="17sp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txt_detail"
-                android:text=" Story"
-                android:textStyle="bold"
-                android:textColor="#2a4d79"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:layout_below="@+id/view1"/>
+          </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/movie_desc"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:textColor="@android:color/black"
-                android:padding="16dp"
-                android:text="@string/movie_static_desc"
-                android:layout_below="@+id/txt_detail"
-                android:layout_alignParentStart="true" />
 
             <View
-                android:layout_width="match_parent"
-                android:layout_below="@id/movie_desc"
                 android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/section_story"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
-                android:background="#e1e1e1"
-                android:layout_height="0.5dp"/>
+                android:background="#e1e1e1" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:padding="20dp"
                 android:id="@+id/desc_item_lang"
-                android:layout_below="@+id/view2"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_height="0dp"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:text="en"
-                        android:textSize="20sp"
-                        android:id="@+id/movie_lang"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Language"
-                        android:textStyle="italic"
-                        android:textColor="#7f0a83"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center_horizontal"/>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:text="100 min"
-                        android:textSize="20sp"
-                        android:id="@+id/movie_runtime"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Runtime"
-                        android:textStyle="italic"
-                        android:textColor="#7f0a83"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center_horizontal"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:text="955 votes"
-                        android:textSize="20sp"
-                        android:id="@+id/movie_vote"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Votes"
-                        android:textStyle="italic"
-                        android:textColor="#7f0a83"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center_horizontal"/>
-
-                    </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_below="@id/desc_item_lang"
-                android:id="@+id/view3"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:background="#e1e1e1"
-                android:layout_height="0.5dp"/>
-
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_cast"
-                android:text="Cast and Crew"
-                android:textStyle="bold"
-                android:textColor="#2a4d79"
-                android:textSize="16sp"
-                android:padding="10dp"
-                android:gravity="center_horizontal"
-                android:layout_below="@id/view3"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_below="@+id/view2"
                 android:gravity="center"
-                android:padding="10dp"
-                android:clickable="true"
-                android:id="@+id/movie_cast"
-                android:layout_below="@+id/txt_cast"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal"
+                android:padding="20dp">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_account_circle_black_24dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_account_circle_black_24dp"/>
+                    <TextView
+                        android:id="@+id/movie_lang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="en"
+                        android:textSize="20sp" />
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/ic_account_circle_black_24dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"
+                        android:text="Language"
+                        android:textColor="#7f0a83"
+                        android:textStyle="italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/movie_runtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="100 min"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"
+                        android:text="Runtime"
+                        android:textColor="#7f0a83"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/movie_vote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="955 votes"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"
+                        android:text="Votes"
+                        android:textColor="#7f0a83"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <View
+                android:id="@+id/view3"
                 android:layout_width="match_parent"
-                android:layout_below="@id/movie_cast"
-                android:id="@+id/view4"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/desc_item_lang"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
-                android:background="#e1e1e1"
-                android:layout_height="0.5dp"/>
+                android:background="#e1e1e1" />
+
+            <TextView
+                android:id="@+id/txt_cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view3"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Cast and Crew"
+                android:textColor="#2a4d79"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:id="@+id/movie_cast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_cast"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/ic_account_circle_black_24dp" />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/ic_account_circle_black_24dp" />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/ic_account_circle_black_24dp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/movie_cast"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:background="#e1e1e1" />
 
             <Button
+                android:id="@+id/bt_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/bt_review"
-                android:layout_marginTop="20dp"
+                android:layout_below="@+id/movie_cast"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:text="Write a Review"
-                android:layout_below="@+id/movie_cast"/>
-
+                android:layout_marginTop="20dp"
+                android:text="Read Movie Review" />
 
         </RelativeLayout>
 
-   </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/txt_review"
-        android:text="8.5"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:background="@drawable/back_rect"
-        android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginRight="20dp"
+        android:background="@drawable/back_rect"
+        android:padding="10dp"
+        android:text="8.5"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:elevation="5dp"
-        app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="top|center_horizontal" />
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="bottom|center_horizontal" />
 
 </android.support.design.widget.CoordinatorLayout>

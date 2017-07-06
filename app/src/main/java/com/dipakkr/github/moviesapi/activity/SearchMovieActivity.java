@@ -18,6 +18,7 @@ import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
+import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
 import java.net.URL;
 import java.util.List;
@@ -59,7 +60,10 @@ public class SearchMovieActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 progressBar.setVisibility(View.INVISIBLE);
-                if(response != null){
+                int ct = 0;
+                ct = response.body().getMovies().size();
+
+                if(ct != 0){
                     movies = response.body().getMovies();
                     recyclerView.setAdapter(new MovieAdapter(movies,SearchMovieActivity.this,R.layout.list_movie_item));
                 }else {
@@ -74,5 +78,27 @@ public class SearchMovieActivity extends AppCompatActivity {
                 txt.setVisibility(View.VISIBLE);
             }
         });
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(this, recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                String id = movies.get(position).getId();
+
+                String movie_name = movies.get(position).getTitle();
+                Intent detailIntent = new Intent(SearchMovieActivity.this,MovieDetailActivity.class);
+                detailIntent.putExtra("movie_id",id);
+                detailIntent.putExtra("movie_name",movie_name);
+                detailIntent.putExtra("pos",position);
+                startActivity(detailIntent);
+            }
+
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+
+        }));
     }
 }

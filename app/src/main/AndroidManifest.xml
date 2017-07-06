@@ -101,8 +101,8 @@
             android:name=".activity.VideosActivity"
             android:label="Trailers "></activity>
 
-        <activity android:name=".activity.MovieReview">
-
+        <activity android:name=".activity.MovieReview"
+            android:label="Reviews">
         </activity>
     </application>
 
