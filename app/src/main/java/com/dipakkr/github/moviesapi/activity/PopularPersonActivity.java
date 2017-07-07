@@ -56,6 +56,7 @@ public class PopularPersonActivity extends AppCompatActivity {
 
         fetchDataFromApi();
         handleItemClick();
+
     }
 
     public void fetchDataFromApi(){
@@ -84,6 +85,8 @@ public class PopularPersonActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(PopularPersonActivity.this,CelebrityProfile.class);
+                String person_id = celebrities.get(position).getId();
+                intent.putExtra("person_id",person_id);
                 startActivity(intent);
             }
 
@@ -133,5 +136,6 @@ public class PopularPersonActivity extends AppCompatActivity {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
+
 }
 

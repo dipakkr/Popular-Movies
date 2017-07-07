@@ -19,10 +19,10 @@ public class Celebrity {
     @SerializedName("name")
     private String name;
 
-   /* @SerializedName("id")
+   @SerializedName("id")
     private String id;
 
-    @SerializedName("popularity")
+    /*@SerializedName("popularity")
     private int rating;
 
     @SerializedName("known_for")
@@ -32,6 +32,10 @@ public class Celebrity {
         this.mImagePath = mImagePath;
         this.name = name;
 
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getmImagePath() {

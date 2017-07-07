@@ -50,6 +50,5 @@ public class UserProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(UserProfileActivity.this,MainActivity.class));
             }
         });
-
     }
 }

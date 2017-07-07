@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:padding="10dp"
+            android:fontFamily="serif"
             android:id="@+id/review_content"
             android:text="This is the description of the movie review."/>
     </LinearLayout>

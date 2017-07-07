@@ -1,5 +1,6 @@
 package com.dipakkr.github.moviesapi.rest;
 
+import com.dipakkr.github.moviesapi.model.CelebrityDetail;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.model.MovieReviewResponse;
@@ -45,5 +46,8 @@ public interface ApIinterface {
 
     @GET("movie/{movie_id}/reviews")
     Call<MovieReviewResponse>getMoviesReview(@Path("movie_id") String id ,@Query("api_key") String apikey);
+
+    /*@GET("person/{person_id}")*/
+
 
 }

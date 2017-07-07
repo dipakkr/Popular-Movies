@@ -1,5 +1,6 @@
 package com.dipakkr.github.moviesapi.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,6 +15,10 @@ public class CelebrityProfile extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("person_id");
+
 
     }
 }

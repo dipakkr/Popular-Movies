@@ -122,9 +122,9 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
                     Toast.makeText(Authentication.this, "Error in Login", Toast.LENGTH_SHORT).show();
                 }
             });
-
+/*
             LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-            LoginManager.getInstance().logInWithReadPermissions(this,Arrays.asList("user_friends"));
+            LoginManager.getInstance().logInWithReadPermissions(this,Arrays.asList("user_friends"));*/
     }
 
     private void nextActivity(Profile profile){

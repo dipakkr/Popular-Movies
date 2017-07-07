@@ -10,47 +10,58 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="2dp"
-        android:layout_height="wrap_content">
+        android:padding="2dp">
 
         <ImageView
+            android:id="@+id/movie_icon"
             android:layout_width="160dp"
             android:layout_height="200dp"
-            android:background="#eeeeee"
-            android:id="@+id/movie_icon"/>
+            android:background="#eeeeee" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp">
 
             <TextView
+                android:id="@+id/movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Movie Title"
-                android:id="@+id/movie_title"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-            <TextView
+            <!-- <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Movie Overview"
                 android:visibility="gone"
                 android:padding="2dp"
                 android:id="@+id/movie_desc"/>
-
+-->
             <TextView
+                android:id="@+id/movie_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/movie_release_date"
+                android:layout_marginTop="15dp"
                 android:padding="2dp"
-                android:layout_marginTop="10dp"
-                android:text="23-01-1996"/>
+                android:text="23-01-1996" />
 
-        </LinearLayout>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/heart_selector"
+                android:gravity="right"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="12dp" />
+
+        </RelativeLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>
