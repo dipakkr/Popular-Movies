@@ -61,6 +61,8 @@ public class NowPlayingMovies extends Fragment {
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setNestedScrollingEnabled(false);
+
 
         Call<MovieResponse> movieResponseCall = apIinterface.getNowPlayingMovies(API_KEY);
 

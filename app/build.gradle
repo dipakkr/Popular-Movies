@@ -47,8 +47,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.8.0'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'jp.wasabeef:picasso-transformations:2.1.2'
+    compile 'com.google.firebase:firebase-ads:10.0.1'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 

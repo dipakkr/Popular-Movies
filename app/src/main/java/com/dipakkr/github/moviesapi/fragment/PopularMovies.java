@@ -60,6 +60,8 @@ public class PopularMovies extends Fragment {
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setNestedScrollingEnabled(false);
+
 
         Call<MovieResponse> movieResponseCall = apIinterface.getPopularMovies(API_KEY);
 

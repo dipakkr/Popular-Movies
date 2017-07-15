@@ -8,28 +8,28 @@
     android:layout_height="match_parent">
 
 
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="wrap_content"
+   <!-- <com.google.android.gms.common.SignInButton
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/bt_google">
 
-    </com.google.android.gms.common.SignInButton>
-
+    </com.google.android.gms.common.SignInButton>-->
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_margin="30dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bt_skip"
         android:layout_gravity="center"
-        android:text="Skip"/>
+        android:text="Skip Login"/>
 
 </LinearLayout>

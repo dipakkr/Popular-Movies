@@ -31,4 +31,7 @@
 
     <string name="about_info">MoviesHub is a free and open source project built under Android developer nanodegree course. Feel free to contribute and report issues.</string>
 
+    //AdMob
+    <string name="banner_ad_unit_id">ca-app-pub-4350473558500023/9020527995</string>
+
 </resources>

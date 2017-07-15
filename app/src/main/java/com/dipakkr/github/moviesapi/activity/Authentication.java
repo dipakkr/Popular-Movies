@@ -60,21 +60,16 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         setContentView(R.layout.activity_startup);
 
         checkForLoginStatus();
-        FacebookSdk.sdkInitialize(this);
-
-        SignInButton signInButton = (SignInButton) findViewById(R.id.bt_google);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setOnClickListener(this);
         mSkip = (Button) findViewById(R.id.bt_skip);
         mSkip.setOnClickListener(this);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+       /* GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+                .build();*/
 
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -134,24 +129,20 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         }
     }
 
-    private void signIn(){
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent,RC_SIGN_IN);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SIGN_IN){
+        /*if(requestCode == RC_SIGN_IN){
             GoogleSignInResult signInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(signInResult);
         }
-
+*/
         callbackManager.onActivityResult(requestCode,resultCode,data);
     }
 
-    private void handleSignInResult(GoogleSignInResult signInResult){
+   /* private void handleSignInResult(GoogleSignInResult signInResult){
 
         if(signInResult.isSuccess()){
             GoogleSignInAccount account = signInResult.getSignInAccount();
@@ -160,7 +151,8 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         }else{
             Toast.makeText(this, "Failed Sign in ", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
+
     @Override
 
     public void onClick(View v) {
@@ -169,10 +161,6 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         switch (id){
             case R.id.bt_skip :
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                break;
-
-            case R.id.bt_google :
-                signIn();
                 break;
 
             case R.id.login_button :

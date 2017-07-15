@@ -7,14 +7,20 @@
     tools:showIn="@layout/list_movie_item"
     android:layout_height="match_parent">
 
-
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:id="@+id/recyler_view"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyler_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.NestedScrollView>
 
     <ProgressBar
         android:layout_width="wrap_content"

@@ -59,6 +59,8 @@ public class UpcomingMovies extends android.support.v4.app.Fragment {
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setNestedScrollingEnabled(false);
+
 
         Call<MovieResponse> movieResponseCall = apIinterface.getUpcomingMovies(API_KEY);
 
