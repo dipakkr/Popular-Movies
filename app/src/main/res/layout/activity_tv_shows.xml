@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TvShowActivity">
 
-</LinearLayout>
+
+    <include layout="@layout/toolbar"/>
+
+
+    <!--  Add layout behaviour so that it doesn't get hide behind the tabs
+      app:layout_behavior="@string/appbar_scrolling_view_behavior-->
+
+    <android.support.v4.view.ViewPager
+        xmlns:app="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:id="@+id/viewpager"
+        ads:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -10,7 +10,8 @@ import java.util.List;
  */
 
 public class MovieResponse {
-   /* @SerializedName("pages")
+
+    /* @SerializedName("pages")
     private int pages;*/
 
     @SerializedName("results")
@@ -53,4 +54,5 @@ public class MovieResponse {
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
+
 }

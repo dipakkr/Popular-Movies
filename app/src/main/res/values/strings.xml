@@ -22,6 +22,13 @@
     <string name="top_movies">Top Rated Movies</string>
     <string name="now_movies">Now Playing Movies</string>
 
+    //TvTabs
+    <string name="tv_onair">On Air Shows</string>
+    <string name="tv_air_today">Airing Today Shows</string>
+    <string name="tv_popular">Popular Shows</string>
+    <string name="tv_latest">Latest Shows</string>
+    <string name="tv_toprated">TopRated Shows</string>
+
     <string name="movie_static_desc">Movie Story</string>
     <string name="account_email"> android@geeksportal.com </string>
 

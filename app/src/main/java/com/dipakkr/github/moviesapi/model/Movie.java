@@ -10,8 +10,12 @@ import java.util.List;
  */
 
 public class Movie {
+
     @SerializedName("poster_path")
     private String posterPath;
+
+    @SerializedName("original_name")
+    private String name;
 
     @SerializedName("adult")
     private boolean adult ;
@@ -66,6 +70,22 @@ public class Movie {
         this.voteCount = voteCount;
         this.video = video;
         this.voteAverage = voteAverage;
+    }
+
+    public Movie(String posterPath, String name, String overview, String id, String orginalLang, String backdropPath, Double popularity, Integer voteCount, Double voteAverage) {
+        this.posterPath = posterPath;
+        this.name = name;
+        this.overview = overview;
+        Id = id;
+        this.orginalLang = orginalLang;
+        this.backdropPath = backdropPath;
+        this.popularity = popularity;
+        this.voteCount = voteCount;
+        this.voteAverage = voteAverage;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setPosterPath(String posterPath) {

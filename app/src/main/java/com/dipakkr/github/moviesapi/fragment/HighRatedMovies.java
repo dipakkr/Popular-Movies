@@ -62,7 +62,7 @@ public class HighRatedMovies extends Fragment {
         bar = (ProgressBar)view.findViewById(R.id.pbar);
         bar.setVisibility(View.VISIBLE);
 
-         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
+        recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setNestedScrollingEnabled(false);
 

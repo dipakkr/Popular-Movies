@@ -1,12 +1,12 @@
 package com.dipakkr.github.moviesapi.rest;
 
-import com.dipakkr.github.moviesapi.model.CelebrityDetail;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.model.MovieReviewResponse;
 import com.dipakkr.github.moviesapi.model.MovieVideo;
 import com.dipakkr.github.moviesapi.model.PopularCelebrity;
-import com.facebook.CallbackManager;
+import com.dipakkr.github.moviesapi.model.TvResponse;
+import com.dipakkr.github.moviesapi.model.TvShow;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -48,6 +48,19 @@ public interface ApIinterface {
     Call<MovieReviewResponse>getMoviesReview(@Path("movie_id") String id ,@Query("api_key") String apikey);
 
     /*@GET("person/{person_id}")*/
+    @GET("tv/latest")
+    Call<MovieResponse>getTvLatest(@Query("api_key") String apikey);
 
+    @GET("tv/on_the_air")
+    Call<TvResponse>getTvOnAir(@Query("api_key") String apikey);
+
+    @GET("tv/top_rated")
+    Call<TvResponse>getTvTopRated(@Query("api_key") String apikey);
+
+    @GET("tv/airing_today")
+    Call<TvResponse>getTvAiringToday(@Query("api_key") String apikey);
+
+    @GET("tv/popular")
+    Call<MovieResponse>getTvPopular(@Query("api_key") String apikey);
 
 }

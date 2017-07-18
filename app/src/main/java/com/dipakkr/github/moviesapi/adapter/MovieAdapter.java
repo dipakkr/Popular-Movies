@@ -35,7 +35,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
         TextView movieTitle;
         TextView movieOverview;
         ImageView movieIcon;
-        TextView movieDate;
 
         public MovieViewHoder( View v){
 
@@ -44,7 +43,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
             movieTitle = (TextView)v.findViewById(R.id.movie_title);
             movieOverview = (TextView)v.findViewById(R.id.movie_desc);
             movieIcon = (ImageView)v.findViewById(R.id.movie_icon);
-            movieDate = (TextView)v.findViewById(R.id.movie_release_date);
         }
     }
 
@@ -75,8 +73,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHod
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.movieIcon);
 
-        holder.movieTitle.setText(movieList.get(position).getTitle());
-        holder.movieDate.setText(movieList.get(position).getReleaseDate());
+
+        if(movieList.get(position).getTitle() != null){
+            holder.movieTitle.setText(movieList.get(position).getTitle());
+        }
+
+        if(movieList.get(position).getName() != null){
+            holder.movieTitle.setText(movieList.get(position).getName());
+        }
+
+       /* holder.movieDate.setText(movieList.get(position).getReleaseDate());*/
     }
 
     @Override
