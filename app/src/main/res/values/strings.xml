@@ -41,4 +41,10 @@
     //AdMob
     <string name="banner_ad_unit_id">ca-app-pub-4350473558500023/9020527995</string>
 
+    <string name="person_bio"> From Wikipedia, the free encyclopedia Kenneth George "Kenny" Baker
+        (born 24 August 1934) was a British actor and musician, best known as the man inside R2-D2
+        in the popular Star Wars film series. Description above from the Wikipedia article Kenny Baker,
+        licensed under CC-BY-SA, full list of contributors on Wikipedia
+</string>
+
 </resources>

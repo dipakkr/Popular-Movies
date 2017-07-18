@@ -39,8 +39,8 @@
         <activity
             android:name=".activity.TvShowActivity"
             android:label="@string/tvshow"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -98,16 +98,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.VideosActivity"
-            android:label="Trailers ">
-
-        </activity>
-
-        <activity android:name=".activity.MovieReview"
-            android:label="Reviews">
-        </activity>
+            android:label="Trailers "></activity>
+        <activity
+            android:name=".activity.MovieReview"
+            android:label="Reviews"></activity>
+        <activity android:name=".activity.TvShowSearch"></activity>
     </application>
 
 </manifest>
