@@ -48,14 +48,12 @@ public interface ApIinterface {
     Call<MovieReviewResponse>getMoviesReview(@Path("movie_id") String id ,@Query("api_key") String apikey);
 
     /*@GET("person/{person_id}")*/
-    @GET("tv/latest")
-    Call<MovieResponse>getTvLatest(@Query("api_key") String apikey);
 
     @GET("tv/on_the_air")
     Call<TvResponse>getTvOnAir(@Query("api_key") String apikey);
 
     @GET("tv/top_rated")
-    Call<TvResponse>getTvTopRated(@Query("api_key") String apikey);
+    Call<MovieResponse>getTvTopRated(@Query("api_key") String apikey);
 
     @GET("tv/airing_today")
     Call<TvResponse>getTvAiringToday(@Query("api_key") String apikey);
