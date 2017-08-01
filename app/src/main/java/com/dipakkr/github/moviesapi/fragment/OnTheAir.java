@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,7 +43,7 @@ public class OnTheAir extends Fragment {
         View view = inflater.inflate(R.layout.frag_ontheair,container,false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         recyclerView.setNestedScrollingEnabled(false);
 
 

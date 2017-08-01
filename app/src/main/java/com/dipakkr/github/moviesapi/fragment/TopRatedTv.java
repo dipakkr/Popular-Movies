@@ -1,9 +1,11 @@
 package com.dipakkr.github.moviesapi.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,11 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.dipakkr.github.moviesapi.R;
+import com.dipakkr.github.moviesapi.activity.MovieDetailActivity;
 import com.dipakkr.github.moviesapi.adapter.MovieAdapter;
 import com.dipakkr.github.moviesapi.model.Movie;
 import com.dipakkr.github.moviesapi.model.MovieResponse;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
+import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
 import java.util.List;
 
@@ -47,7 +51,7 @@ public class TopRatedTv extends Fragment {
         View view = inflater.inflate(R.layout.frag_toprated,container,false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.recyler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         recyclerView.setNestedScrollingEnabled(false);
 
        /* recyclerView.setItemAnimator(new SlideInUpAnimator()); */
@@ -70,6 +74,30 @@ public class TopRatedTv extends Fragment {
         });
 
         return view;
+    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        recyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getActivity(), recyclerView, new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                String id = movies.get(position).getId();
+                String movie_name = movies.get(position).getTitle();
+
+                Intent detailIntent = new Intent(getActivity(),MovieDetailActivity.class);
+                detailIntent.putExtra("movie_id",id);
+                detailIntent.putExtra("movie_name",movie_name);
+                detailIntent.putExtra("pos",position);
+                startActivity(detailIntent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+
+        }));
     }
 
 }

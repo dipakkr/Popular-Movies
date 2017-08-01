@@ -8,5 +8,13 @@
          android:icon="@drawable/share"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/menu_share_fb"
+          android:title="Share on Facebook" />
+
+    <item
+        android:title="Favourite"
+        app:showAsAction="always"
+        android:id="@+id/fav"
+        android:icon="@drawable/heart_selector"/>
 
 </menu>

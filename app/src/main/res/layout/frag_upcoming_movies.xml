@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     tools:showIn="@layout/list_movie_item"
     tools:actionBarNavMode="tabs"
+    android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
     <ProgressBar
@@ -13,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="visible"
-        android:background="@drawable/circular_strip"
         android:id="@+id/pbar"/>
 
     <android.support.v4.widget.NestedScrollView

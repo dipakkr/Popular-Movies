@@ -9,6 +9,6 @@
         android:state_pressed="true">
     </item>
 
-    <item android:drawable="@drawable/ic_favorite_border_black_24dp"/>
+    <item android:drawable="@drawable/heart_brown"/>
 
 </selector>

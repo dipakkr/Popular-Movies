@@ -3,6 +3,7 @@ package com.dipakkr.github.moviesapi.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -52,7 +53,7 @@ public class SearchMovieActivity extends AppCompatActivity {
         txt = (TextView)findViewById(R.id.txt_des);
         progressBar = (ProgressBar)findViewById(R.id.pb);
         recyclerView = (RecyclerView)findViewById(R.id.rv_moview_search);
-        recyclerView.setLayoutManager(new LinearLayoutManager(SearchMovieActivity.this));
+        recyclerView.setLayoutManager(new GridLayoutManager(SearchMovieActivity.this,3));
 
         ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
         Call<MovieResponse> call = apIinterface.getSearchedMovie(getResources().getString(R.string.api_key),query);

@@ -72,6 +72,7 @@ public class Movie {
         this.voteAverage = voteAverage;
     }
 
+
     public Movie(String posterPath, String name, String overview, String id, String orginalLang, String backdropPath, Double popularity, Integer voteCount, Double voteAverage) {
         this.posterPath = posterPath;
         this.name = name;

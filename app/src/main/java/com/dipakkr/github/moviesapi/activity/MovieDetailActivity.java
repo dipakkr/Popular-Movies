@@ -74,7 +74,7 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
 
     private AdView mAdView;
 
-
+    int count = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -188,11 +188,29 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
         if (id == android.R.id.home) {
             finish();
         }
+
+        if(id == R.id.fav){
+
+            if(count == 1){
+                count ++;
+                item.setIcon(R.drawable.ic_favorite_red_24dp);
+                Toast.makeText(this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                count --;
+                item.setIcon(R.drawable.heart_brown);
+                Toast.makeText(this, "Removed from Favourite", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
         if(id == R.id.share_movie){
-           //
+            //
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {

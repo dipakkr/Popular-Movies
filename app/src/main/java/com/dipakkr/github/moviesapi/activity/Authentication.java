@@ -153,6 +153,7 @@ public class Authentication extends AppCompatActivity implements GoogleApiClient
         }
     }*/
 
+
     @Override
 
     public void onClick(View v) {

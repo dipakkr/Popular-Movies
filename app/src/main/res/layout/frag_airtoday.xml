@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     tools:showIn="@layout/list_movie_item"
     tools:actionBarNavMode="tabs"
+    android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/circular_strip"
         android:visibility="visible"
         android:id="@+id/pbar"/>
 

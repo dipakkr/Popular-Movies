@@ -1,6 +1,5 @@
 package com.dipakkr.github.moviesapi.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -16,15 +15,13 @@ import android.widget.Toast;
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.adapter.PersonAdapter;
 import com.dipakkr.github.moviesapi.model.Celebrity;
-import com.dipakkr.github.moviesapi.model.MovieResponse;
+
 import com.dipakkr.github.moviesapi.model.PopularCelebrity;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
 import com.dipakkr.github.moviesapi.utils.RecyclerViewClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
