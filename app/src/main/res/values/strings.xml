@@ -14,7 +14,7 @@
     <string name="movie_detail">Movie Details</string>
     <string name="my_profile">My Profile</string>
 
-    <string name="api_key">53873c6fc26c2abac786d7822d2e1a93</string>
+    <string name="api_key"></string>
 
     //Name of tabs
     <string name="pop_movies">Popular Movies</string>
@@ -33,13 +33,13 @@
     <string name="account_email"> android@geeksportal.com </string>
 
     //Fb SDK
-    <string name="facebook_app_id">1532459306764208</string>
-    <string name="fb_login_protocol_scheme">fb1532459306764208</string>
+    <string name="facebook_app_id"></string>
+    <string name="fb_login_protocol_scheme"></string>
 
     <string name="about_info">MoviesHub is a free and open source project built under Android developer nanodegree course. Feel free to contribute and report issues.</string>
 
     //AdMob
-    <string name="banner_ad_unit_id">ca-app-pub-4350473558500023/9020527995</string>
+    <string name="banner_ad_unit_id"></string>
 
     <string name="person_bio"> From Wikipedia, the free encyclopedia Kenneth George "Kenny" Baker
         (born 24 August 1934) was a British actor and musician, best known as the man inside R2-D2
