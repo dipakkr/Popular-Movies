@@ -50,7 +50,7 @@ public class VideosActivity extends AppCompatActivity {
         String id = intent.getStringExtra("movie_id");
         Log.v("PASSED ID ====??>>>",id);
 
-         listView = (ListView)findViewById(R.id.list_trailers);
+        listView = (ListView)findViewById(R.id.list_trailers);
         final VideoAdapter adapter = new VideoAdapter(this,R.layout.list_item_videos,movieVideoLists);
 
         ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);

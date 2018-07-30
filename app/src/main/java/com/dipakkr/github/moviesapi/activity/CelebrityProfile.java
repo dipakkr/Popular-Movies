@@ -16,8 +16,6 @@ import com.dipakkr.github.moviesapi.model.Celebrity;
 import com.dipakkr.github.moviesapi.model.CelebrityDetail;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
@@ -36,8 +34,6 @@ public class CelebrityProfile extends AppCompatActivity {
     int count = 0;
     CelebrityDetail celebrityDetail;
 
-    private AdView mAdView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +51,6 @@ public class CelebrityProfile extends AppCompatActivity {
         }
 
         getSupportActionBar().setTitle(name);
-
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         ApIinterface apIinterface = Apiclient.getClient().create(ApIinterface.class);
         Call<CelebrityDetail> call = apIinterface.getCelebrityDetail(id,getString(R.string.api_key));

@@ -19,8 +19,6 @@ import com.dipakkr.github.moviesapi.MainActivity;
 import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.adapter.SimplePagerAdapter;
 import com.dipakkr.github.moviesapi.adapter.TvPagerAdapter;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 /**
  * Created by deepak on 6/13/17.
@@ -28,7 +26,6 @@ import com.google.android.gms.ads.AdView;
 
 public class TvShowActivity extends AppCompatActivity {
 
-    private AdView mAdView;
     Toolbar toolbar;
     SearchView searchView;
 
@@ -50,9 +47,6 @@ public class TvShowActivity extends AppCompatActivity {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override

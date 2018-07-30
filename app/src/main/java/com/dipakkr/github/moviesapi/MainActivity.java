@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private GoogleApiClient apiClient;
     private Profile profile;
     ImageView profile_image;
-    AccessToken accessToken;
+    AccessToken accessToken = null;
 
     private AdView mAdView;
 
@@ -88,9 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        checkLoginstatus();
+//        checkLoginstatus();
 
-        MobileAds.initialize(this,getResources().getString(R.string.banner_ad_unit_id));
 
         DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -103,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mEmail = (TextView)header.findViewById(R.id.acc_email);
         profile_image = (ImageView)header.findViewById(R.id.acc_image);
         RelativeLayout headerContainer = (RelativeLayout)header.findViewById(R.id.profile_detail_container);
+
         headerContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,15 +133,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         viewPager.setAdapter(adapter);
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
     }
 
-    private void checkLoginstatus(){
-        accessToken = AccessToken.getCurrentAccessToken();
-        profile = Profile.getCurrentProfile();
-    }
+//    private void checkLoginstatus(){
+//        accessToken = AccessToken.getCurrentAccessToken();
+//        profile = Profile.getCurrentProfile();
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

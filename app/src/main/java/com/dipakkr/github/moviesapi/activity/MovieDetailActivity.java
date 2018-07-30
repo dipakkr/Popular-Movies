@@ -28,9 +28,6 @@ import com.dipakkr.github.moviesapi.R;
 import com.dipakkr.github.moviesapi.model.MovieDescription;
 import com.dipakkr.github.moviesapi.rest.ApIinterface;
 import com.dipakkr.github.moviesapi.rest.Apiclient;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 
 
@@ -72,7 +69,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     String id;
     String movie_name;
 
-    private AdView mAdView;
 
     int count = 1;
 
@@ -80,12 +76,6 @@ public class MovieDetailActivity extends AppCompatActivity implements AppBarLayo
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-
-        MobileAds.initialize(this,getResources().getString(R.string.banner_ad_unit_id));
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
 
         Intent intent = this.getIntent();
 
